@@ -138,15 +138,18 @@ let Karten = [Karte1, Karte2, Karte3, Karte4, Karte5, Karte6, Karte7, Karte8, Ka
     Karte28, Karte29, Karte30, Karte31, Karte32];
 function getRandomInt(min, max) {
     min = Math.ceil(0);
-    max = Math.floor(32);
+    max = Math.floor(Karten.length);
     return Math.floor(Math.random() * (max - min)) + min;
 }
 function Handkartenzufällig(anzahlkarten, alleKarten) {
     for (let i = 0; i < anzahlkarten; i++) {
-        let zahl = getRandomInt(0, 32);
-        zahl = zahl - 1;
-        Karten.splice(zahl, 1);
+        let zahl = getRandomInt(0, Karten.length);
+        let prodElement = document.createElement('div');
+        let aufderhand = `<p>${Karten[zahl]}</p>`;
+        prodElement.innerHTML = aufderhand;
+        document.getElementById("Handkarten").appendChild(prodElement);
         Handkarten.push(Karten[zahl]);
+        Karten.splice(zahl, 1);
         console.log(alleKarten[zahl]);
     }
 }
