@@ -199,7 +199,7 @@ function Handkartenzufällig(anzahlkarten: number, alleKarten: Karte[]) {
         let zahl: number = getRandomInt(0, Karten.length);
 
         let prodElement = document.createElement('div');
-        let aufderhand: Karte = `<p>${Karten[zahl]}</p>`
+        let aufderhand: string = `<p class="${Karten[zahl].typ}">${Karten[zahl].typ} ${Karten[zahl].wert}</p>`
         prodElement.innerHTML = aufderhand;
         document.getElementById("Handkarten").appendChild(prodElement);
 

@@ -1,2 +1,57 @@
+.stylen {
+            background-color:darkgoldenrod;
+            border-style: dotted;
+            margin:50px;
+            margin-right:500px;
+            margin-left:500px;
+            padding:50px;
+            padding-top:100px;
+            padding-bottom:100px;
+}
 
 
+.Herz{
+        background-color:darkred;
+        padding:50px;
+        padding-top:100px;
+        padding-bottom:100px;
+        color:white;
+        width:10%
+}
+
+
+.Karo{
+        background-color:darkred;
+        padding:50px;
+        padding-top:100px;
+        padding-bottom:100px;
+        color:white;
+        width:10%;
+}
+
+
+
+.Pik{
+        background-color:black;
+        padding:50px;
+        padding-top:100px;
+        padding-bottom:100px;
+        color:white;
+        width:10%;
+}
+
+
+.Kreuz{
+        background-color:black;
+        padding:50px;
+        padding-top:100px;
+        padding-bottom:100px;
+        color:white;
+        width:10%;
+}
+
+body div{
+        background-color: white;
+        display:flex;
+        flex-direction: row;
+}
