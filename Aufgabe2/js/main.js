@@ -136,24 +136,21 @@ let Karte32 = {
 let Karten = [Karte1, Karte2, Karte3, Karte4, Karte5, Karte6, Karte7, Karte8, Karte9, Karte10, Karte11, Karte12, Karte13, Karte14,
     Karte15, Karte16, Karte17, Karte18, Karte19, Karte20, Karte21, Karte22, Karte23, Karte24, Karte25, Karte26, Karte27,
     Karte28, Karte29, Karte30, Karte31, Karte32];
-/*function Handkarten(endzahl:number){
-
-        function Zufallszahl(){
-             Math.floor(Math.random(
-
-             )*32)
-        }
+function getRandomInt(min, max) {
+    min = Math.ceil(0);
+    max = Math.floor(32);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
-
-console.log(Handkarten(endzahl))*/
 function Handkartenzufällig(anzahlkarten, alleKarten) {
-    let zahl = getRandomInt(0, 32);
-    function getRandomInt(min, max) {
-        min = Math.ceil(0);
-        max = Math.floor(32);
-        return Math.floor(Math.random() * (max - min)) + min;
+    for (let i = 0; i < anzahlkarten; i++) {
+        let zahl = getRandomInt(0, 32);
+        zahl = zahl - 1;
+        Karten.splice(zahl, 1);
+        Handkarten.push(Karten[zahl]);
+        console.log(alleKarten[zahl]);
     }
-    return alleKarten[zahl];
 }
-console.log(Handkartenzufällig(endzahl, Karten));
+let Handkarten = [];
+Handkartenzufällig(endzahl, Karten);
+console.log(Handkarten);
 //# sourceMappingURL=main.js.map

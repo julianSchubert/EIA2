@@ -187,36 +187,31 @@ let Karten: Karte[] = [Karte1, Karte2, Karte3, Karte4, Karte5, Karte6, Karte7, K
 
 
 
-
-
-/*function Handkarten(endzahl:number){
-
-        function Zufallszahl(){
-             Math.floor(Math.random(
-
-             )*32)
-        }
+function getRandomInt(min: number, max: number): number {
+    min = Math.ceil(0);
+    max = Math.floor(32);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
-
-console.log(Handkarten(endzahl))*/
 
 
 function Handkartenzufällig(anzahlkarten: number, alleKarten: Karte[]) {
+     for (let i=0; i<anzahlkarten; i++)  {
+        let zahl: number = getRandomInt(0, 32);
+        zahl=zahl-1;
+        Karten.splice(zahl,1);
+        Handkarten.push(Karten[zahl]);
 
+        console.log(alleKarten[zahl]);
+     }
 
- 
-
-    let zahl: number = getRandomInt(0, 32);
-
-        function getRandomInt(min: number, max: number): number {
-                min = Math.ceil(0);
-                max = Math.floor(32);
-                return Math.floor(Math.random() * (max - min)) + min;
-        }
-
-    return alleKarten[zahl]
-    
 }
 
-console.log(Handkartenzufällig(endzahl, Karten))
+
+let Handkarten:Karte[]=[]
+
+Handkartenzufällig(endzahl, Karten)
+
+console.log(Handkarten);
+
+
 
