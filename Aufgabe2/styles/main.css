@@ -2,11 +2,10 @@
             background-color:darkgoldenrod;
             border-style: dotted;
             margin:50px;
-            margin-right:500px;
-            margin-left:500px;
             padding:50px;
             padding-top:100px;
             padding-bottom:100px;
+            width:50px;
 }
 
 
@@ -16,7 +15,7 @@
         padding-top:100px;
         padding-bottom:100px;
         color:white;
-        width:10%
+        width:10%;
 }
 
 
@@ -51,7 +50,15 @@
 }
 
 body div{
+        width:100%;
         background-color: white;
         display:flex;
         flex-direction: row;
+}
+
+
+.direction{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 }
