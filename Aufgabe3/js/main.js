@@ -2,6 +2,7 @@ var Aufgabe3;
 (function (Aufgabe3) {
     //Noch die äs und ös weg void hinter den Funktionen
     document.getElementById("Kartenstapel").addEventListener("click", Karteziehen);
+    document.getElementById("Handkarten").addEventListener("click", Karteablegen);
     document.getElementById("Hs").addEventListener("click", Kartensortieren);
     function Sortiertekartenanzeigen() {
         //  Kartensortieren();

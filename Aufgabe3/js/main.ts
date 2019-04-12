@@ -9,7 +9,7 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt.*/
 
 document.getElementById("Kartenstapel").addEventListener("click",Karteziehen);
 
-
+document.getElementById("Handkarten").addEventListener("click",Karteablegen);
 
 document.getElementById("Hs").addEventListener("click",Kartensortieren);
 
