@@ -236,12 +236,13 @@ var Aufgabe3;
     console.log(Handkarten);
     //Karten ablegen
     document.getElementById("Handkarten").addEventListener("click", Karteablegen);
-    function Karteablegen() {
+    function Karteablegen(event) {
         let neueReihenfolge = event.target;
         for (let j = 0; j < Handkarten.length; j++) {
             console.log(neueReihenfolge.getAttribute("id"));
             if (Number(neueReihenfolge.getAttribute("id")) == Handkarten[j].kartenReihenfolge) {
                 Ablagestapel.push(Handkarten[j]);
+                console.log(Ablagestapel);
                 let prodElement = document.createElement('div');
                 let aufderhand = `<p class="${Handkarten[j].typ}" id="${Handkarten[j].kartenReihenfolge}">${Handkarten[j].typ} ${Handkarten[j].wert}</p>`;
                 prodElement.innerHTML = aufderhand;

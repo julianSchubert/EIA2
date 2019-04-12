@@ -336,7 +336,7 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
     //Karten ablegen
     document.getElementById("Handkarten").addEventListener("click", Karteablegen);
 
-    function Karteablegen(): void {
+    function Karteablegen(event:MouseEvent): void {
 
         
         let neueReihenfolge: HTMLElement = <HTMLElement>event.target;
@@ -345,7 +345,7 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
             console.log(neueReihenfolge.getAttribute("id"));
             if (Number(neueReihenfolge.getAttribute("id")) == Handkarten[j].kartenReihenfolge) {
                 Ablagestapel.push(Handkarten[j]);
-
+                console.log(Ablagestapel);
                 let prodElement = document.createElement('div');
                 let aufderhand: string = `<p class="${Handkarten[j].typ}" id="${Handkarten[j].kartenReihenfolge}">${Handkarten[j].typ} ${Handkarten[j].wert}</p>`
                 prodElement.innerHTML = aufderhand;
