@@ -1,3 +1,8 @@
+/*Aufgabe: Aufgabe2 MauMau Name: Julian Schubert
+Matrikel:261168
+Datum: 07.04.19
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt.*/
 let endzahl;
 function handkartenanzahlauswählen() {
     let handkarten = prompt("Handkartenanzahl wählen", "1-5");
