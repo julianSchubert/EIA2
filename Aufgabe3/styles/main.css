@@ -53,11 +53,12 @@ body button{background-color: darkcyan;}
         width:10%;
 }
 
-body div{
+#Handkarten{
         width:100%;
         background-color: white;
         display:flex;
         flex-direction: row;
+        flex-wrap: wrap;
 }
 
 
