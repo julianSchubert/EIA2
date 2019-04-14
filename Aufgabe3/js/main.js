@@ -1,174 +1,173 @@
 var Aufgabe3;
 (function (Aufgabe3) {
-    //Noch die äs und ös weg void hinter den Funktionen pruefeAufLeerzeichen (Camel Case!!!!!!!!!!!!!)
     document.getElementById("Kartenstapel").addEventListener("click", Karteziehen);
     document.addEventListener("keydown", pruefeaufleertaste);
     document.getElementById("Hs").addEventListener("click", Kartensortieren);
-    let Karte1 = {
+    let karte1 = {
         typ: "Herz",
         wert: "Sieben",
         kartenReihenfolge: 0,
     };
-    let Karte2 = {
+    let karte2 = {
         typ: "Herz",
         wert: "Acht",
         kartenReihenfolge: 1,
     };
-    let Karte3 = {
+    let karte3 = {
         typ: "Herz",
         wert: "Neun",
         kartenReihenfolge: 2,
     };
-    let Karte4 = {
+    let karte4 = {
         typ: "Herz",
         wert: "Zehn",
         kartenReihenfolge: 3,
     };
-    let Karte5 = {
+    let karte5 = {
         typ: "Herz",
         wert: "Bube",
         kartenReihenfolge: 4,
     };
-    let Karte6 = {
+    let karte6 = {
         typ: "Herz",
         wert: "Dame",
         kartenReihenfolge: 5,
     };
-    let Karte7 = {
+    let karte7 = {
         typ: "Herz",
         wert: "König",
         kartenReihenfolge: 6,
     };
-    let Karte8 = {
+    let karte8 = {
         typ: "Herz",
         wert: "Ass",
         kartenReihenfolge: 7,
     };
-    let Karte9 = {
+    let karte9 = {
         typ: "Karo",
         wert: "Sieben",
         kartenReihenfolge: 8,
     };
-    let Karte10 = {
+    let karte10 = {
         typ: "Karo",
         wert: "Acht",
         kartenReihenfolge: 9,
     };
-    let Karte11 = {
+    let karte11 = {
         typ: "Karo",
         wert: "Neun",
         kartenReihenfolge: 10,
     };
-    let Karte12 = {
+    let karte12 = {
         typ: "Karo",
         wert: "Zehn",
         kartenReihenfolge: 11,
     };
-    let Karte13 = {
+    let karte13 = {
         typ: "Karo",
         wert: "Bube",
         kartenReihenfolge: 12,
     };
-    let Karte14 = {
+    let karte14 = {
         typ: "Karo",
         wert: "Dame",
         kartenReihenfolge: 13,
     };
-    let Karte15 = {
+    let karte15 = {
         typ: "Karo",
         wert: "König",
         kartenReihenfolge: 14,
     };
-    let Karte16 = {
+    let karte16 = {
         typ: "Karo",
         wert: "Ass",
         kartenReihenfolge: 15,
     };
-    let Karte17 = {
+    let karte17 = {
         typ: "Pik",
         wert: "Sieben",
         kartenReihenfolge: 16,
     };
-    let Karte18 = {
+    let karte18 = {
         typ: "Pik",
         wert: "Acht",
         kartenReihenfolge: 17,
     };
-    let Karte19 = {
+    let karte19 = {
         typ: "Pik",
         wert: "Neun",
         kartenReihenfolge: 18,
     };
-    let Karte20 = {
+    let karte20 = {
         typ: "Pik",
         wert: "Zehn",
         kartenReihenfolge: 19,
     };
-    let Karte21 = {
+    let karte21 = {
         typ: "Pik",
         wert: "Bube",
         kartenReihenfolge: 20,
     };
-    let Karte22 = {
+    let karte22 = {
         typ: "Pik",
         wert: "Dame",
         kartenReihenfolge: 21,
     };
-    let Karte23 = {
+    let karte23 = {
         typ: "Pik",
         wert: "König",
         kartenReihenfolge: 22,
     };
-    let Karte24 = {
+    let karte24 = {
         typ: "Pik",
         wert: "Ass",
         kartenReihenfolge: 23,
     };
-    let Karte25 = {
+    let karte25 = {
         typ: "Kreuz",
         wert: "Sieben",
         kartenReihenfolge: 24,
     };
-    let Karte26 = {
+    let karte26 = {
         typ: "Kreuz",
         wert: "Acht",
         kartenReihenfolge: 25,
     };
-    let Karte27 = {
+    let karte27 = {
         typ: "Kreuz",
         wert: "Neun",
         kartenReihenfolge: 26,
     };
-    let Karte28 = {
+    let karte28 = {
         typ: "Kreuz",
         wert: "Zehn",
         kartenReihenfolge: 27,
     };
-    let Karte29 = {
+    let karte29 = {
         typ: "Kreuz",
         wert: "Bube",
         kartenReihenfolge: 28,
     };
-    let Karte30 = {
+    let karte30 = {
         typ: "Kreuz",
         wert: "Dame",
         kartenReihenfolge: 29,
     };
-    let Karte31 = {
+    let karte31 = {
         typ: "Kreuz",
         wert: "König",
         kartenReihenfolge: 30,
     };
-    let Karte32 = {
+    let karte32 = {
         typ: "Kreuz",
         wert: "Ass",
         kartenReihenfolge: 31,
     };
-    let Karten = [Karte1, Karte2, Karte3, Karte4, Karte5, Karte6, Karte7, Karte8, Karte9, Karte10, Karte11, Karte12, Karte13, Karte14,
-        Karte15, Karte16, Karte17, Karte18, Karte19, Karte20, Karte21, Karte22, Karte23, Karte24, Karte25, Karte26, Karte27,
-        Karte28, Karte29, Karte30, Karte31, Karte32];
-    let Handkarten = [];
-    let Ablagestapel = [];
+    let karten = [karte1, karte2, karte3, karte4, karte5, karte6, karte7, karte8, karte9, karte10, karte11, karte12, karte13, karte14,
+        karte15, karte16, karte17, karte18, karte19, karte20, karte21, karte22, karte23, karte24, karte25, karte26, karte27,
+        karte28, karte29, karte30, karte31, karte32];
+    let handkarten = [];
+    let ablagestapel = [];
     //Wahl der Handkartenanzahl
     let endzahl;
     function handkartenanzahlauswaehlen() {
@@ -180,17 +179,17 @@ var Aufgabe3;
     //Handkarten generieren
     function Handkartenzufaellig(anzahlkarten) {
         for (let i = 0; i < anzahlkarten; i++) {
-            let zahl = getRandomInt(0, Karten.length);
-            Handkarten.push(Karten[zahl]);
+            let zahl = getRandomInt(0, karten.length);
+            handkarten.push(karten[zahl]);
             writeHTML(i);
-            Karten.splice(zahl, 1);
+            karten.splice(zahl, 1);
         }
     }
     Handkartenzufaellig(endzahl);
     //Zufallszahl
     function getRandomInt(min, max) {
         min = Math.ceil(0);
-        max = Math.floor(Karten.length);
+        max = Math.floor(karten.length);
         return Math.floor(Math.random() * (max - min)) + min;
     }
     function pruefeaufleertaste(_x) {
@@ -201,23 +200,23 @@ var Aufgabe3;
     }
     //Eine Karte nachziehen
     function Karteziehen() {
-        let neuezahl = getRandomInt(0, Karten.length);
-        Handkarten.push(Karten[neuezahl]);
-        writeHTML(Handkarten.length - 1);
-        Karten.splice(neuezahl, 1);
+        let neuezahl = getRandomInt(0, karten.length);
+        handkarten.push(karten[neuezahl]);
+        writeHTML(handkarten.length - 1);
+        karten.splice(neuezahl, 1);
     }
     //i übergeben den Stelle im neuen Array entspricht i
     function writeHTML(_neu) {
         let prodElement = document.createElement('div');
-        let aufderhand = `<p class="${Handkarten[_neu].typ} id="${Handkarten[_neu].kartenReihenfolge}">${Handkarten[_neu].typ} ${Handkarten[_neu].wert}</p>`;
+        let aufderhand = `<p class="${handkarten[_neu].typ}" id="${handkarten[_neu].kartenReihenfolge}">${handkarten[_neu].typ} ${handkarten[_neu].wert}</p>`;
         prodElement.innerHTML = aufderhand;
         document.getElementById("Handkarten").appendChild(prodElement);
     }
     //Sortieren
     function Kartensortieren() {
-        Handkarten.sort(Typvergleichen);
+        handkarten.sort(Typvergleichen);
         document.getElementById("Handkarten").innerHTML = ""; //Hier wird die Anzeige der Handkarten geleert
-        for (let p = 0; p < Handkarten.length; p++) {
+        for (let p = 0; p < handkarten.length; p++) {
             writeHTML(p);
         }
     }
@@ -233,28 +232,28 @@ var Aufgabe3;
         }
         return 0;
     }
-    console.log(Handkarten);
+    console.log(handkarten);
     //Karten ablegen
     document.getElementById("Handkarten").addEventListener("click", Karteablegen);
     function Karteablegen(event) {
         let x = event.target;
-        for (let j = 0; j < Handkarten.length; j++) {
+        for (let j = 0; j < handkarten.length; j++) {
             console.log(x.getAttribute("id"));
-            if (Number(x.getAttribute("id")) == Handkarten[j].kartenReihenfolge) {
-                Ablagestapel.push(Handkarten[j]);
-                console.log(Ablagestapel);
+            if (Number(x.getAttribute("id")) == handkarten[j].kartenReihenfolge) {
+                ablagestapel.push(handkarten[j]);
+                console.log(ablagestapel);
                 let prodElement = document.createElement('div');
-                let neueHand = `<p class="${Handkarten[j].typ}" id="${Handkarten[j].kartenReihenfolge}">${Handkarten[j].typ} ${Handkarten[j].wert}</p>`;
+                let neueHand = `<p class="${handkarten[j].typ}" id="${handkarten[j].kartenReihenfolge}">${handkarten[j].typ} ${handkarten[j].wert}</p>`;
                 prodElement.innerHTML = neueHand;
                 document.getElementById("Ablagestapel").appendChild(prodElement);
-                Handkarten.splice(j, 1);
+                handkarten.splice(j, 1);
                 document.getElementById("Handkarten").innerHTML = "";
-                for (let u = 0; u < Handkarten.length; u++) {
+                for (let u = 0; u < handkarten.length; u++) {
                     writeHTML(u);
                 }
             }
         }
     }
-    console.log(Ablagestapel);
+    console.log(ablagestapel);
 })(Aufgabe3 || (Aufgabe3 = {}));
 //# sourceMappingURL=main.js.map

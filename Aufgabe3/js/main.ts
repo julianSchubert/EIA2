@@ -1,10 +1,8 @@
 namespace Aufgabe3 {/*Aufgabe: Aufgabe3 MauMau Interaktiv Name: Julian Schubert
 Matrikel:261168
 Datum: 11.04.19 
-Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von Lucas Rohrberg*/
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.*/
 
-    //Noch die äs und ös weg void hinter den Funktionen pruefeAufLeerzeichen (Camel Case!!!!!!!!!!!!!)
 
 
     document.getElementById("Kartenstapel").addEventListener("click", Karteziehen);
@@ -23,206 +21,206 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
         kartenReihenfolge: number;
     }
 
-    let Karte1: Karte = {
+    let karte1: Karte = {
         typ: "Herz",
         wert: "Sieben",
         kartenReihenfolge: 0,
-    }
+    };
 
-    let Karte2: Karte = {
+    let karte2: Karte = {
         typ: "Herz",
         wert: "Acht",
         kartenReihenfolge: 1,
-    }
+    };
 
-    let Karte3: Karte = {
+    let karte3: Karte = {
         typ: "Herz",
         wert: "Neun",
         kartenReihenfolge: 2,
-    }
+    };
 
-    let Karte4: Karte = {
+    let karte4: Karte = {
         typ: "Herz",
         wert: "Zehn",
         kartenReihenfolge: 3,
-    }
+    };
 
-    let Karte5: Karte = {
+    let karte5: Karte = {
         typ: "Herz",
         wert: "Bube",
         kartenReihenfolge: 4,
-    }
+    };
 
-    let Karte6: Karte = {
+    let karte6: Karte = {
         typ: "Herz",
         wert: "Dame",
         kartenReihenfolge: 5,
-    }
+    };
 
-    let Karte7: Karte = {
+    let karte7: Karte = {
         typ: "Herz",
         wert: "König",
         kartenReihenfolge: 6,
-    }
+    };
 
-    let Karte8: Karte = {
+    let karte8: Karte = {
         typ: "Herz",
         wert: "Ass",
         kartenReihenfolge: 7,
-    }
+    };
 
 
-    let Karte9: Karte = {
+    let karte9: Karte = {
         typ: "Karo",
         wert: "Sieben",
         kartenReihenfolge: 8,
-    }
+    };
 
-    let Karte10: Karte = {
+    let karte10: Karte = {
         typ: "Karo",
         wert: "Acht",
         kartenReihenfolge: 9,
-    }
+    };
 
-    let Karte11: Karte = {
+    let karte11: Karte = {
         typ: "Karo",
         wert: "Neun",
         kartenReihenfolge: 10,
-    }
+    };
 
-    let Karte12: Karte = {
+    let karte12: Karte = {
         typ: "Karo",
         wert: "Zehn",
         kartenReihenfolge: 11,
-    }
+    };
 
-    let Karte13: Karte = {
+    let karte13: Karte = {
         typ: "Karo",
         wert: "Bube",
         kartenReihenfolge: 12,
-    }
+    };
 
-    let Karte14: Karte = {
+    let karte14: Karte = {
         typ: "Karo",
         wert: "Dame",
         kartenReihenfolge: 13,
-    }
+    };
 
-    let Karte15: Karte = {
+    let karte15: Karte = {
         typ: "Karo",
         wert: "König",
         kartenReihenfolge: 14,
-    }
+    };
 
-    let Karte16: Karte = {
+    let karte16: Karte = {
         typ: "Karo",
         wert: "Ass",
         kartenReihenfolge: 15,
-    }
+    };
 
-    let Karte17: Karte = {
+    let karte17: Karte = {
         typ: "Pik",
         wert: "Sieben",
         kartenReihenfolge: 16,
-    }
+    };
 
-    let Karte18: Karte = {
+    let karte18: Karte = {
         typ: "Pik",
         wert: "Acht",
         kartenReihenfolge: 17,
-    }
+    };
 
-    let Karte19: Karte = {
+    let karte19: Karte = {
         typ: "Pik",
         wert: "Neun",
         kartenReihenfolge: 18,
-    }
+    };
 
-    let Karte20: Karte = {
+    let karte20: Karte = {
         typ: "Pik",
         wert: "Zehn",
         kartenReihenfolge: 19,
-    }
+    };
 
-    let Karte21: Karte = {
+    let karte21: Karte = {
         typ: "Pik",
         wert: "Bube",
         kartenReihenfolge: 20,
-    }
+    };
 
-    let Karte22: Karte = {
+    let karte22: Karte = {
         typ: "Pik",
         wert: "Dame",
         kartenReihenfolge: 21,
-    }
+    };
 
-    let Karte23: Karte = {
+    let karte23: Karte = {
         typ: "Pik",
         wert: "König",
         kartenReihenfolge: 22,
-    }
+    };
 
-    let Karte24: Karte = {
+    let karte24: Karte = {
         typ: "Pik",
         wert: "Ass",
         kartenReihenfolge: 23,
-    }
+    };
 
-    let Karte25: Karte = {
+    let karte25: Karte = {
         typ: "Kreuz",
         wert: "Sieben",
         kartenReihenfolge: 24,
-    }
+    };
 
-    let Karte26: Karte = {
+    let karte26: Karte = {
         typ: "Kreuz",
         wert: "Acht",
         kartenReihenfolge: 25,
-    }
+    };
 
-    let Karte27: Karte = {
+    let karte27: Karte = {
         typ: "Kreuz",
         wert: "Neun",
         kartenReihenfolge: 26,
-    }
+    };
 
-    let Karte28: Karte = {
+    let karte28: Karte = {
         typ: "Kreuz",
         wert: "Zehn",
         kartenReihenfolge: 27,
-    }
+    };
 
-    let Karte29: Karte = {
+    let karte29: Karte = {
         typ: "Kreuz",
         wert: "Bube",
         kartenReihenfolge: 28,
-    }
+    };
 
-    let Karte30: Karte = {
+    let karte30: Karte = {
         typ: "Kreuz",
         wert: "Dame",
         kartenReihenfolge: 29,
-    }
+    };
 
-    let Karte31: Karte = {
+    let karte31: Karte = {
         typ: "Kreuz",
         wert: "König",
         kartenReihenfolge: 30,
-    }
+    };
 
-    let Karte32: Karte = {
+    let karte32: Karte = {
         typ: "Kreuz",
         wert: "Ass",
         kartenReihenfolge: 31,
-    }
+    };
 
 
-    let Karten: Karte[] = [Karte1, Karte2, Karte3, Karte4, Karte5, Karte6, Karte7, Karte8, Karte9, Karte10, Karte11, Karte12, Karte13, Karte14,
-        Karte15, Karte16, Karte17, Karte18, Karte19, Karte20, Karte21, Karte22, Karte23, Karte24, Karte25, Karte26, Karte27,
-        Karte28, Karte29, Karte30, Karte31, Karte32]
+    let karten: Karte[] = [karte1, karte2, karte3, karte4, karte5, karte6, karte7, karte8, karte9, karte10, karte11, karte12, karte13, karte14,
+        karte15, karte16, karte17, karte18, karte19, karte20, karte21, karte22, karte23, karte24, karte25, karte26, karte27,
+        karte28, karte29, karte30, karte31, karte32];
 
-    let Handkarten: Karte[] = [];
-    let Ablagestapel: Karte[] = [];
+    let handkarten: Karte[] = [];
+    let ablagestapel: Karte[] = [];
 
 
 
@@ -243,15 +241,15 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
 
     //Handkarten generieren
 
-    function Handkartenzufaellig(anzahlkarten: number) {
+    function Handkartenzufaellig(anzahlkarten: number): void {
         for (let i: number = 0; i < anzahlkarten; i++) {
-            let zahl: number = getRandomInt(0, Karten.length);
+            let zahl: number = getRandomInt(0, karten.length);
 
 
 
-            Handkarten.push(Karten[zahl]);
+            handkarten.push(karten[zahl]);
             writeHTML(i);
-            Karten.splice(zahl, 1);
+            karten.splice(zahl, 1);
 
 
         }
@@ -263,7 +261,7 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
 
     function getRandomInt(min: number, max: number): number {
         min = Math.ceil(0);
-        max = Math.floor(Karten.length);
+        max = Math.floor(karten.length);
         return Math.floor(Math.random() * (max - min)) + min;
     }
 
@@ -281,19 +279,19 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
     //Eine Karte nachziehen
     function Karteziehen(): void {
 
-        let neuezahl: number = getRandomInt(0, Karten.length);
-        Handkarten.push(Karten[neuezahl]);
-        writeHTML(Handkarten.length - 1);
-        Karten.splice(neuezahl, 1);
+        let neuezahl: number = getRandomInt(0, karten.length);
+        handkarten.push(karten[neuezahl]);
+        writeHTML(handkarten.length - 1);
+        karten.splice(neuezahl, 1);
 
 
     }
 
     //i übergeben den Stelle im neuen Array entspricht i
 
-    function writeHTML(_neu: number) {
-        let prodElement = document.createElement('div')
-        let aufderhand: string = `<p class="${Handkarten[_neu].typ} id="${Handkarten[_neu].kartenReihenfolge}">${Handkarten[_neu].typ} ${Handkarten[_neu].wert}</p>`
+    function writeHTML(_neu: number): void {
+        let prodElement = document.createElement('div');
+        let aufderhand: string = `<p class="${handkarten[_neu].typ}" id="${handkarten[_neu].kartenReihenfolge}">${handkarten[_neu].typ} ${handkarten[_neu].wert}</p>`;
         prodElement.innerHTML = aufderhand;
         document.getElementById("Handkarten").appendChild(prodElement);
                
@@ -303,10 +301,10 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
     //Sortieren
     function Kartensortieren(): void { //function Sortiertekartenanzeigen():void{//Hier fehlt noch die Funktion die die neuen Handkarten zurückgibt
 
-        Handkarten.sort(Typvergleichen);
+        handkarten.sort(Typvergleichen);
         document.getElementById("Handkarten").innerHTML = "";   //Hier wird die Anzeige der Handkarten geleert
 
-        for (let p: number = 0; p < Handkarten.length; p++) {
+        for (let p: number = 0; p < handkarten.length; p++) {
             writeHTML(p);
         }
     }
@@ -329,31 +327,31 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
 
 
 
-    console.log(Handkarten);
+    console.log(handkarten);
 
 
 
     //Karten ablegen
     document.getElementById("Handkarten").addEventListener("click", Karteablegen);
 
-    function Karteablegen(event:MouseEvent): void {
+    function Karteablegen(event: MouseEvent): void {
 
         
         let x: HTMLElement = <HTMLElement>event.target;
 
-        for (let j: number = 0; j < Handkarten.length; j++) {
+        for (let j: number = 0; j < handkarten.length; j++) {
             console.log(x.getAttribute("id"));
-            if (Number(x.getAttribute("id")) == Handkarten[j].kartenReihenfolge) {
-                Ablagestapel.push(Handkarten[j]);
-                console.log(Ablagestapel);
+            if (Number(x.getAttribute("id")) == handkarten[j].kartenReihenfolge) {
+                ablagestapel.push(handkarten[j]);
+                console.log(ablagestapel);
                 let prodElement = document.createElement('div');
-                let neueHand: string = `<p class="${Handkarten[j].typ}" id="${Handkarten[j].kartenReihenfolge}">${Handkarten[j].typ} ${Handkarten[j].wert}</p>`
+                let neueHand: string = `<p class="${handkarten[j].typ}" id="${handkarten[j].kartenReihenfolge}">${handkarten[j].typ} ${handkarten[j].wert}</p>`;
                 prodElement.innerHTML = neueHand;
                 document.getElementById("Ablagestapel").appendChild(prodElement);
                 
-                Handkarten.splice(j, 1);
+                handkarten.splice(j, 1);
                 document.getElementById("Handkarten").innerHTML = "";
-                for (let u: number = 0; u < Handkarten.length; u++) {
+                for (let u: number = 0; u < handkarten.length; u++) {
                     writeHTML(u);
                 }
             }
@@ -361,7 +359,7 @@ Er wurde in Zusammenarbeit mit Sina Haas und Bente Gossel erstellt mit Hilfe von
 
     }
 
-    console.log(Ablagestapel)
+    console.log(ablagestapel);
 
 
 
