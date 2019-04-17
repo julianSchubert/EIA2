@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eisdealer</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body>
+    <button id="uebersicht">Übersicht</button>
+
+    <fieldset id="Eiscream">
+        <legend> Eissorten </legend>
+        <p>1,1€ pro Kugel</p>
+        <input type="checkbox" name="Eissorte1" value="Vanille" id="eissorte1"/>
+        <label for="eissorte1">Vanille</label>
+        <input type="checkbox" name="Eissorte2" value="Schokolade"id="eissorte2">
+        <label for="eissorte2">Schokolade</label>
+        <input type="checkbox" name="Eissorte3" value="Nuss" id="eissorte3"/>
+        <label for="eissorte3">Nuss</label>
+        <input type="checkbox" name="Eissorte4" value="Erdbeere"id="eissorte4">
+        <label for="eissorte4">Erdbeere</label>
+    </fieldset>
+
+    <fieldset id="Zusätze">
+            <legend> Zusätze </legend>
+            <p>0,5€ pro Topping</p>
+            <input type="checkbox" name="Zusätze1" value="Sahne" id="zusatz1"/>
+            <label for="zusatz1">Sahne</label>
+            <input type="checkbox" name="Zusätze2" value="Streusel" id="zusatz2"/>
+            <label for="zusatz2">Streusel</label>
+            <input type="checkbox" name="Zusätze3" value="Soße" id="zusatz3"/>
+            <label for="zusatz3">Soße</label>
+        </fieldset>
+
+        <fieldset id="Behältnis">
+                <legend> Behältniss</legend>
+                <input type="radio" name="Behältnis" value="Waffel" id="behältnis1" />
+                <label for="behältnis1">Waffel</label>
+                <input type="radio" name="Behältnis" value="Becher" id="behältnis2"/>
+                <label for="behältnis2">Becher</label>
+        </fieldset>
+
+         <fieldset id="Lieferart">
+                <legend> Lieferung </legend>
+                <p>Lieferung 2,5€</p>
+                <input type="radio" name="Lieferart" value="Abholung" id="abholen1" />
+                <label for="abholen1">Abholung</label>
+                <input type="radio" name="Lieferart" value="Lieferung" id="abholen2"/>
+                <label for="abholen2">Lieferung</label>
+        </fieldset>
+
+
+        <fieldset id="Adresse">
+                <legend> Adresse </legend>
+                Adresse
+                <input type="text" name="Adresse" placeholder="Hier die Adresse" required/>
+                <hr/>
+                Hausnummer
+                <input type="text" name="Nummer" pattern="[0-9]" placeholder="Hausnummer" required/>
+                <hr/>
+                Postleitzahl
+                <input type="text" name="PLZ" pattern="[0-9]{5}" placeholder="PLZ" required/>
+                <hr/>
+        </fieldset>        
+        
+	    <fieldset id="Name">
+                <legend> Name </legend>
+                Vorname
+                <input type="text" name="Vorname" placeholder="Vorname" required/>
+                Nachname
+                <input type="text" name="Nachname" placeholder="Nachname"required/>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
