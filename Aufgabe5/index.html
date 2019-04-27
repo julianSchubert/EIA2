@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="uebersicht">Übersicht</button>
+    <div id="Bestellung"></div>
+    <div id="Bestellung2"></div>
+    <div id="anhängen"></div>
+  
+    <fieldset id="Adresse">
+            <legend> Adresse </legend>
+            Adresse
+            <input type="text" name="Adresse" placeholder="Hier die Adresse" id="adresse" required/>
+            <hr/>
+            Hausnummer
+            <input type="text" name="Nummer" pattern="[0-9]" placeholder="Hausnummer" id="hausnummer" required/>
+            <hr/>
+            Postleitzahl
+            <input type="text" name="PLZ" pattern="[0-9]{5}" placeholder="PLZ" id="plz" required/>
+            <hr/>
+    </fieldset>        
+    
+    <fieldset id="Name">
+            <legend> Name </legend>
+            Vorname
+            <input type="text" name="Vorname" placeholder="Vorname" id="name" required/>
+            Nachname
+            <input type="text" name="Nachname" placeholder="Nachname" id="nachname" required/>
+    </fieldset>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
