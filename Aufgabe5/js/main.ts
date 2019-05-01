@@ -54,6 +54,9 @@ namespace Aufgabe5 {
         prodElement.setAttribute("name", _value.name);
         prodElement.setAttribute("id", _value.id);
         prodElement.setAttribute("price", _value.preis.toString());
+        prodElement.setAttribute("min", _value.min);
+        prodElement.setAttribute("max", _value.max);
+        prodElement.setAttribute("step", _value.step);
 
         marker.innerText = _value.value;
         fieldset.appendChild(prodElement);
@@ -66,7 +69,7 @@ namespace Aufgabe5 {
     function Gesamtpreis(_event: Event): void {
         let ziel: HTMLInputElement = <HTMLInputElement>_event.target;
         document.getElementById("Bestellung2").innerHTML = "";
-        if (ziel.checked == true) {
+        if (ziel.checked == true || ziel.stepUp) {//stepUp
             let preis: string = ziel.getAttribute("price");
             gesamt += Number(preis);
             let prodElement: HTMLDivElement = document.createElement("div");
@@ -75,7 +78,7 @@ namespace Aufgabe5 {
 
             prodElement.innerHTML = neues;
         }
-        else if (ziel.checked == false) {
+        else if (ziel.checked == false || ziel.stepDown) {
             let preis: string = ziel.getAttribute("price");
             gesamt -= Number(preis);
             let prodElement: HTMLDivElement = document.createElement("div");

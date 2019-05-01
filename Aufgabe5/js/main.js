@@ -41,6 +41,9 @@ var Aufgabe5;
         prodElement.setAttribute("name", _value.name);
         prodElement.setAttribute("id", _value.id);
         prodElement.setAttribute("price", _value.preis.toString());
+        prodElement.setAttribute("min", _value.min);
+        prodElement.setAttribute("max", _value.max);
+        prodElement.setAttribute("step", _value.step);
         marker.innerText = _value.value;
         fieldset.appendChild(prodElement);
         fieldset.appendChild(marker);
@@ -49,7 +52,7 @@ var Aufgabe5;
     function Gesamtpreis(_event) {
         let ziel = _event.target;
         document.getElementById("Bestellung2").innerHTML = "";
-        if (ziel.checked == true) {
+        if (ziel.checked == true || ziel.stepUp) { //stepUp
             let preis = ziel.getAttribute("price");
             gesamt += Number(preis);
             let prodElement = document.createElement("div");
@@ -57,7 +60,7 @@ var Aufgabe5;
             let neues = `<p> Gesamtpreis ${gesamt} € </p>`;
             prodElement.innerHTML = neues;
         }
-        else if (ziel.checked == false) {
+        else if (ziel.checked == false || ziel.stepDown) {
             let preis = ziel.getAttribute("price");
             gesamt -= Number(preis);
             let prodElement = document.createElement("div");
