@@ -36,7 +36,8 @@ var Aufgabe5;
     function WerteEinfuegen(_value) {
         let prodElement = document.createElement("input");
         let marker = document.createElement("label");
-        prodElement.setAttribute("value", _value.value);
+        prodElement.setAttribute("value", _value.value.toString());
+        prodElement.setAttribute("text", _value.text);
         prodElement.setAttribute("type", _value.type);
         prodElement.setAttribute("name", _value.name);
         prodElement.setAttribute("id", _value.id);
@@ -44,30 +45,32 @@ var Aufgabe5;
         prodElement.setAttribute("min", _value.min);
         prodElement.setAttribute("max", _value.max);
         prodElement.setAttribute("step", _value.step);
-        marker.innerText = _value.value;
+        marker.innerText = _value.text;
         fieldset.appendChild(prodElement);
         fieldset.appendChild(marker);
     }
-    let gesamt = 0;
     function Gesamtpreis(_event) {
-        let ziel = _event.target;
+        let ziel = document.getElementsByTagName("input");
+        let gesamt = 0;
         document.getElementById("Bestellung2").innerHTML = "";
-        if (ziel.checked == true || ziel.stepUp) { //stepUp
-            let preis = ziel.getAttribute("price");
-            gesamt += Number(preis);
-            let prodElement = document.createElement("div");
-            document.getElementById("Bestellung2").appendChild(prodElement);
-            let neues = `<p> Gesamtpreis ${gesamt} € </p>`;
-            prodElement.innerHTML = neues;
+        for (let i = 0; i < ziel.length; i++) {
+            if (ziel[i].type == "number") {
+                let preis = ziel[i].getAttribute("price");
+                gesamt += Number(ziel[i].value) * Number(preis);
+            }
+            if (ziel[i].type == "checkbox" && ziel[i].checked == true) {
+                let preis = ziel[i].getAttribute("price");
+                gesamt += Number(preis);
+            }
+            if (ziel[i].type == "radio" && ziel[i].checked == true) {
+                let preis = ziel[i].getAttribute("price");
+                gesamt += Number(preis);
+            }
         }
-        else if (ziel.checked == false || ziel.stepDown) {
-            let preis = ziel.getAttribute("price");
-            gesamt -= Number(preis);
-            let prodElement = document.createElement("div");
-            document.getElementById("Bestellung2").appendChild(prodElement);
-            let neues = `<p> Gesamtpreis ${gesamt} € </p>`;
-            prodElement.innerHTML = neues;
-        }
+        let prodElement = document.createElement("div");
+        document.getElementById("Bestellung2").appendChild(prodElement);
+        let neues = `<p> Gesamtpreis ${gesamt} € </p>`;
+        prodElement.innerHTML = neues;
     }
     function TexteDazu(_event) {
         let x = document.getElementsByTagName("input");
@@ -76,7 +79,14 @@ var Aufgabe5;
             if (x[j].checked == true) {
                 let neuesp = document.createElement("p");
                 document.getElementById("Bestellung").appendChild(neuesp);
-                neuesp.innerHTML = x[j].value;
+                let xy = x[j].getAttribute("text");
+                neuesp.innerHTML = xy;
+            }
+            if (x[j].type == "number" && Number(x[j].value) > 0) {
+                let neuesp = document.createElement("p");
+                document.getElementById("Bestellung").appendChild(neuesp);
+                let xy = x[j].getAttribute("text");
+                neuesp.innerHTML = xy;
             }
         }
     }
