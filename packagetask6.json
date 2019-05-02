@@ -1,11 +1,11 @@
 {
 	"name": "miniserver",
 	"version": "1.0.0",
-	"description": "Aufgabe6",
+	"description": "Minimal server just bouncing the URL",
 	"author": "Julian Schubert",
 	"main": "Server.js",
 	"scripts": {
-		"start": "node Aufgabe6/Server.js"
+		"start": "node ./Aufgabe6/index.html"
 	},
 	"engines": {
 		"node": "8.11.3"
