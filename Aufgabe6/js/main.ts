@@ -1,7 +1,8 @@
+
 namespace Aufgabe6 {
-    /*Aufgabe: Aufgabe5 Eisdealer re-loaded Name: Julian Schubert
+    /*Aufgabe: Aufgabe6 Eisdealer re-loaded Name: Julian Schubert
     Matrikel:261168
-    Datum: 17.04.19 
+    Datum: 02.05.19 
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
     In Zusammenarbeit mit Sina Haas, Bente Gossel und Katharina Schmitt*/
 
@@ -12,6 +13,7 @@ namespace Aufgabe6 {
         anzeigen(data);
         let alleFieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         document.getElementById("uebersicht").addEventListener("click", allesAusgefuellt);
+        //document.getElementById("abschicken").addEventListener("click", DatenAnDenServerHaengen);
         for (let i: number = 0; i < alleFieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = alleFieldsets[i];
             fieldset.addEventListener("change", Gesamtpreis);
@@ -19,6 +21,7 @@ namespace Aufgabe6 {
 
         }
     }
+
 
     function anzeigen(_zuweisung: Zuweisung): void {
 
@@ -70,12 +73,12 @@ namespace Aufgabe6 {
         let ziel: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let gesamt: number = 0;
         document.getElementById("Bestellung2").innerHTML = "";
-        for (let i: number = 0; i < ziel.length ; i++) {
-            if ( ziel[i].type == "number") {
+        for (let i: number = 0; i < ziel.length; i++) {
+            if (ziel[i].type == "number") {
                 let preis: string = ziel[i].getAttribute("price");
                 gesamt += Number(ziel[i].value) * Number(preis);
             }
-            if ( ziel[i].type == "checkbox" && ziel[i].checked == true) {
+            if (ziel[i].type == "checkbox" && ziel[i].checked == true) {
                 let preis: string = ziel[i].getAttribute("price");
                 gesamt += Number(preis);
             }
@@ -83,8 +86,8 @@ namespace Aufgabe6 {
                 let preis: string = ziel[i].getAttribute("price");
                 gesamt += Number(preis);
             }
-         
-        }  
+
+        }
         let prodElement: HTMLDivElement = document.createElement("div");
         document.getElementById("Bestellung2").appendChild(prodElement);
         let neues: string = `<p> Gesamtpreis ${gesamt} € </p>`;
@@ -99,13 +102,13 @@ namespace Aufgabe6 {
             if (x[j].checked == true) {
                 let neuesp: HTMLParagraphElement = document.createElement("p");
                 document.getElementById("Bestellung").appendChild(neuesp);
-                let xy: string  = x[j].getAttribute("text");
+                let xy: string = x[j].getAttribute("text");
                 neuesp.innerHTML = xy;
             }
             if (x[j].type == "number" && Number(x[j].value) > 0) {
                 let neuesp: HTMLParagraphElement = document.createElement("p");
                 document.getElementById("Bestellung").appendChild(neuesp);
-                let xy: string  = x[j].getAttribute("text");
+                let xy: string = x[j].getAttribute("text");
                 neuesp.innerHTML = xy;
             }
         }
@@ -141,5 +144,31 @@ namespace Aufgabe6 {
             }
         }
     }
+    
+    /*console.log("Starting server");
+    let port: number = Number(process.env.PORT);
+    if (!port)
+        port = 8100;
 
+    let server: Http.Server = Http.createServer();
+    server.addListener("request", handleRequest);
+    server.addListener("listening", handleListen);
+    server.listen(port);
+
+    function handleListen(): void {
+        console.log("Listening");
+    }
+
+    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+        console.log("I hear voices!");
+        console.log(_request.url);
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+
+        _response.write(_request.url);
+
+
+        _response.end();
+
+    }*/
 }

@@ -7,8 +7,10 @@
     <title>Eisdealer</title>
 </head>
 <body>
+    <form>
     <button id="uebersicht">Übersicht</button>
-    <button id="abschicken">Abschicken</button>
+    <button type="submit" id="abschicken">Abschicken</button>
+    <form action="https://eia2-julian.herokuapp.com/" method="get"></form>
     <div id="Bestellung"></div>
     <div id="Bestellung2"></div>
     <div id="anhängen"></div>
@@ -33,7 +35,7 @@
             Nachname
             <input type="text" name="Nachname" placeholder="Nachname" id="nachname" required/>
     </fieldset>
-
+    </form>
     <script src="./js/data.js"></script>
     <script src="./js/main.js"></script>
 

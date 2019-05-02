@@ -1,8 +1,8 @@
 var Aufgabe6;
 (function (Aufgabe6) {
-    /*Aufgabe: Aufgabe5 Eisdealer re-loaded Name: Julian Schubert
+    /*Aufgabe: Aufgabe6 Eisdealer re-loaded Name: Julian Schubert
     Matrikel:261168
-    Datum: 17.04.19
+    Datum: 02.05.19
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
     In Zusammenarbeit mit Sina Haas, Bente Gossel und Katharina Schmitt*/
     document.addEventListener("DOMContentLoaded", init);
@@ -10,6 +10,7 @@ var Aufgabe6;
         anzeigen(Aufgabe6.data);
         let alleFieldsets = document.getElementsByTagName("fieldset");
         document.getElementById("uebersicht").addEventListener("click", allesAusgefuellt);
+        //document.getElementById("abschicken").addEventListener("click", DatenAnDenServerHaengen);
         for (let i = 0; i < alleFieldsets.length; i++) {
             let fieldset = alleFieldsets[i];
             fieldset.addEventListener("change", Gesamtpreis);
@@ -116,5 +117,31 @@ var Aufgabe6;
             }
         }
     }
+    /*console.log("Starting server");
+    let port: number = Number(process.env.PORT);
+    if (!port)
+        port = 8100;
+
+    let server: Http.Server = Http.createServer();
+    server.addListener("request", handleRequest);
+    server.addListener("listening", handleListen);
+    server.listen(port);
+
+    function handleListen(): void {
+        console.log("Listening");
+    }
+
+    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+        console.log("I hear voices!");
+        console.log(_request.url);
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+
+        _response.write(_request.url);
+
+
+        _response.end();
+
+    }*/
 })(Aufgabe6 || (Aufgabe6 = {}));
 //# sourceMappingURL=main.js.map
