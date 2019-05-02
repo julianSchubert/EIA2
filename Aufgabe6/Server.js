@@ -16,6 +16,7 @@ var L05_Server;
     }
     function handleRequest(_request, _response) {
         console.log("I hear voices!"); //ausgabe von I hear voices in der Konsole
+        console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8"); //ein header wird zu_response(response stream) hinzugefügt (des response stream ist unsere Antwort vom Servers auf unsere Anfrage)
         _response.setHeader("Access-Control-Allow-Origin", "*"); //der server _request kann auch von einer anderen Quelle als der Hauptseite aus aufgerufen werden
         _response.write(_request.url); //_request url  wird in _response reingeschrieben
