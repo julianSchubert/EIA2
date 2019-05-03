@@ -1,6 +1,6 @@
 
 namespace Aufgabe6 {
-    /*Aufgabe: Aufgabe6 Eisdealer re-loaded Name: Julian Schubert
+    /*Aufgabe: Aufgabe6 Erster Node Server Name: Julian Schubert
     Matrikel:261168
     Datum: 02.05.19 
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
@@ -13,11 +13,13 @@ namespace Aufgabe6 {
         anzeigen(data);
         let alleFieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         document.getElementById("uebersicht").addEventListener("click", allesAusgefuellt);
+        document.getElementById("anhängen").addEventListener("click", ValueAender);
         //document.getElementById("abschicken").addEventListener("click", DatenAnDenServerHaengen);
         for (let i: number = 0; i < alleFieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = alleFieldsets[i];
             fieldset.addEventListener("change", Gesamtpreis);
             fieldset.addEventListener("change", TexteDazu);
+
 
         }
     }
@@ -109,7 +111,7 @@ namespace Aufgabe6 {
                 let neuesp: HTMLParagraphElement = document.createElement("p");
                 document.getElementById("Bestellung").appendChild(neuesp);
                 let xy: string = x[j].getAttribute("text");
-                neuesp.innerHTML = xy;
+                neuesp.innerHTML = xy + "*" + x[j].value;
             }
         }
 
@@ -144,31 +146,24 @@ namespace Aufgabe6 {
             }
         }
     }
-    
-    /*console.log("Starting server");
-    let port: number = Number(process.env.PORT);
-    if (!port)
-        port = 8100;
-
-    let server: Http.Server = Http.createServer();
-    server.addListener("request", handleRequest);
-    server.addListener("listening", handleListen);
-    server.listen(port);
-
-    function handleListen(): void {
-        console.log("Listening");
+    function ValueAender(_event: Event): void {
+        let x: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        for (let i: number = 0; i < x.length; i++) {       //durch alle input Elemente durch
+            if (x[i].checked == true) {
+                x[i].setAttribute("value", "1");
+            }
+            if (x[i].type == "radio" && x[i].id == "abholen1" )  {
+                x[i].setAttribute("value", "Abholung");
+            }
+            if (x[i].type == "radio" && x[i].id == "abholen2" )  {
+                x[i].setAttribute("value", "Lieferung");
+            }
+            if (x[i].type == "radio" && x[i].id == "verpackung1" )  {
+                x[i].setAttribute("value", "Becher");
+            }
+            if (x[i].type == "radio" && x[i].id == "verpackung2" )  {
+                x[i].setAttribute("value", "Waffel");
+            }
+        }
     }
-
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-        console.log("I hear voices!");
-        console.log(_request.url);
-        _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Control-Allow-Origin", "*");
-
-        _response.write(_request.url);
-
-
-        _response.end();
-
-    }*/
 }
