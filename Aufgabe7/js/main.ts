@@ -177,7 +177,7 @@ namespace Aufgabe7 {
 
         let ziel: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         for (let i: number = 0; i < ziel.length; i++) {
-            if (ziel[i].value != "0") {
+            if (ziel[i].value != "0" && ziel[i].type != "radio") {
                 meinobjekt += ziel[i].name;
                 meinobjekt += "=" + ziel[i].value + "&";
             }

@@ -143,7 +143,7 @@ var Aufgabe7;
         let meinobjekt = "";
         let ziel = document.getElementsByTagName("input");
         for (let i = 0; i < ziel.length; i++) {
-            if (ziel[i].value != "0") {
+            if (ziel[i].value != "0" && ziel[i].type != "radio") {
                 meinobjekt += ziel[i].name;
                 meinobjekt += "=" + ziel[i].value + "&";
             }
