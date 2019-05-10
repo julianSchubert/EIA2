@@ -172,7 +172,7 @@ namespace Aufgabe7 {
 
 
     export function URLerstellen(): void {
-        let serveradresse: string = "https://eia2-julian.herokuapp.com/"; // mit localhost prrüfen
+        let serveradresse: string = "https://eia2-julian.herokuapp.com//?"; // mit localhost prrüfen
         let meinobjekt: string = "";
 
         let ziel: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");

@@ -139,7 +139,7 @@ var Aufgabe7;
         }
     }
     function URLerstellen() {
-        let serveradresse = "https://eia2-julian.herokuapp.com/"; // mit localhost prrüfen
+        let serveradresse = "https://eia2-julian.herokuapp.com//?"; // mit localhost prrüfen
         let meinobjekt = "";
         let ziel = document.getElementsByTagName("input");
         for (let i = 0; i < ziel.length; i++) {
