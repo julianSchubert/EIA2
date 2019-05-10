@@ -181,6 +181,10 @@ namespace Aufgabe7 {
                 meinobjekt += ziel[i].name;
                 meinobjekt += "=" + ziel[i].value + "&";
             }
+            if (ziel[i].type == "radio" && ziel[i].checked == true){
+                meinobjekt += ziel[i].name;
+                meinobjekt += "=" + ziel[i].value + "&";
+            }
         }
         serveradresse += meinobjekt;
         console.log(serveradresse);
