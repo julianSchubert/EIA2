@@ -1,17 +1,17 @@
-var Aufgabe6;
-(function (Aufgabe6) {
-    /*Aufgabe: Aufgabe6 Erster Node Server Name: Julian Schubert
+var Aufgabe7;
+(function (Aufgabe7) {
+    /*Aufgabe: Aufgabe7 Erster Node Server Name: Julian Schubert
     Matrikel:261168
-    Datum: 02.05.19
+    Datum: 10.05.19
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
     In Zusammenarbeit mit Sina Haas, Bente Gossel und Katharina Schmitt*/
     document.addEventListener("DOMContentLoaded", init);
     function init(_event) {
-        anzeigen(Aufgabe6.data);
+        anzeigen(Aufgabe7.data);
         let alleFieldsets = document.getElementsByTagName("fieldset");
         document.getElementById("uebersicht").addEventListener("click", allesAusgefuellt);
         document.getElementById("anhängen").addEventListener("click", ValueAender);
-        //document.getElementById("abschicken").addEventListener("click", DatenAnDenServerHaengen);
+        document.getElementById("abschicken").addEventListener("click", URLerstellen);
         for (let i = 0; i < alleFieldsets.length; i++) {
             let fieldset = alleFieldsets[i];
             fieldset.addEventListener("change", Gesamtpreis);
@@ -20,7 +20,7 @@ var Aufgabe6;
     }
     function anzeigen(_zuweisung) {
         for (let key in _zuweisung) { //for in 
-            let value = Aufgabe6.data[key];
+            let value = Aufgabe7.data[key];
             neueFieldsets(key);
             for (let i = 0; i < value.length; i++) {
                 WerteEinfuegen(value[i]);
@@ -54,14 +54,6 @@ var Aufgabe6;
     function Gesamtpreis(_event) {
         let ziel = document.getElementsByTagName("input");
         let gesamt = 0;
-        /*
-        var myObject = {};
-        for(){
-            //für jedes input
-            //hol name & value
-            myObject.sorts.vanille = 0;
-        }
-        */
         document.getElementById("Bestellung2").innerHTML = "";
         for (let i = 0; i < ziel.length; i++) {
             if (ziel[i].type == "number") {
@@ -146,5 +138,27 @@ var Aufgabe6;
             }
         }
     }
-})(Aufgabe6 || (Aufgabe6 = {}));
+    function URLerstellen() {
+        let serveradresse = "https://eia2-julian.herokuapp.com/?";
+        let meinobjekt = "";
+        let ziel = document.getElementsByTagName("input");
+        for (let i = 0; i < ziel.length; i++) {
+            if (ziel[i].value != "0") {
+                meinobjekt += ziel[i].name;
+                meinobjekt += "=" + ziel[i].value + "&";
+            }
+        }
+        serveradresse += meinobjekt;
+        console.log(serveradresse);
+        Aufgabe7.sendRequestWithCustomData(serveradresse);
+    }
+    Aufgabe7.URLerstellen = URLerstellen;
+    //Die Option die beiden Funktionen in der main.ts zu schreiben
+    // function sendRequestWithCustomData(_meinobjekt: string): void {
+    //     let xhr: XMLHttpRequest = new XMLHttpRequest();
+    //     xhr.open("GET", address + "?color=" + _mrinobjekt, true);
+    //     xhr.addEventListener("readystatechange", handleStateChange);
+    //     xhr.send();
+    // }
+})(Aufgabe7 || (Aufgabe7 = {}));
 //# sourceMappingURL=main.js.map

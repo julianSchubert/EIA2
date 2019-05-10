@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>Eisdealer</title>
+</head>
+<body>
+    <!--<form action="https://localhost:8100/" method="get">-->
+	
+    <button id="uebersicht">Übersicht</button>
+    <button id="abschicken">Abschicken</button>
+   
+    <div id="anhängen"></div>
+  
+    <fieldset id="Adresse">
+            <legend> Adresse </legend>
+            Adresse
+            <input type="text" name="Adresse" placeholder="Hier die Adresse" id="adresse" required/>
+            <hr/>
+            Hausnummer
+            <input type="text" name="Nummer" pattern="[0-9]" placeholder="Hausnummer" id="hausnummer" required/>
+            <hr/>
+            Postleitzahl
+            <input type="text" name="PLZ" pattern="[0-9]{5}" placeholder="PLZ" id="plz" required/>
+            <hr/>
+    </fieldset>        
+    
+    <fieldset id="Name">
+            <legend> Name </legend>
+            Vorname
+            <input type="text" name="Vorname" placeholder="Vorname" id="name" required/>
+            Nachname
+            <input type="text" name="Nachname" placeholder="Nachname" id="nachname" required/>
+    </fieldset>
+    <div id="Bestellung"></div>
+    <div id="Bestellung2"></div>
+    <div id="Reinpacken"></div>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/SendData.js"></script><!--Hier einbinden um export benutzen zu könnens-->
+
+</body>
+</html>

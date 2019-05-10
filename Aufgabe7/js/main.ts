@@ -1,8 +1,8 @@
 
-namespace Aufgabe6 {
-    /*Aufgabe: Aufgabe6 Erster Node Server Name: Julian Schubert
+namespace Aufgabe7 {
+    /*Aufgabe: Aufgabe7 Erster Node Server Name: Julian Schubert
     Matrikel:261168
-    Datum: 02.05.19 
+    Datum: 10.05.19 
     Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
     In Zusammenarbeit mit Sina Haas, Bente Gossel und Katharina Schmitt*/
 
@@ -14,7 +14,7 @@ namespace Aufgabe6 {
         let alleFieldsets: HTMLCollectionOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
         document.getElementById("uebersicht").addEventListener("click", allesAusgefuellt);
         document.getElementById("anhängen").addEventListener("click", ValueAender);
-        //document.getElementById("abschicken").addEventListener("click", DatenAnDenServerHaengen);
+        document.getElementById("abschicken").addEventListener("click", URLerstellen);
         for (let i: number = 0; i < alleFieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = alleFieldsets[i];
             fieldset.addEventListener("change", Gesamtpreis);
@@ -75,14 +75,7 @@ namespace Aufgabe6 {
         let ziel: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let gesamt: number = 0;
 
-        /*
-        var myObject = {};
-        for(){
-            //für jedes input
-            //hol name & value
-            myObject.sorts.vanille = 0;
-        }
-        */
+
 
         document.getElementById("Bestellung2").innerHTML = "";
         for (let i: number = 0; i < ziel.length; i++) {
@@ -162,18 +155,47 @@ namespace Aufgabe6 {
             if (x[i].checked == true) {
                 x[i].setAttribute("value", "1");
             }
-            if (x[i].type == "radio" && x[i].id == "abholen1" )  {
+            if (x[i].type == "radio" && x[i].id == "abholen1") {
                 x[i].setAttribute("value", "Abholung");
             }
-            if (x[i].type == "radio" && x[i].id == "abholen2" )  {
+            if (x[i].type == "radio" && x[i].id == "abholen2") {
                 x[i].setAttribute("value", "Lieferung");
             }
-            if (x[i].type == "radio" && x[i].id == "verpackung1" )  {
+            if (x[i].type == "radio" && x[i].id == "verpackung1") {
                 x[i].setAttribute("value", "Becher");
             }
-            if (x[i].type == "radio" && x[i].id == "verpackung2" )  {
+            if (x[i].type == "radio" && x[i].id == "verpackung2") {
                 x[i].setAttribute("value", "Waffel");
             }
         }
     }
+
+
+    export function URLerstellen(): void {
+        let serveradresse: string = "https://eia2-julian.herokuapp.com/?";
+        let meinobjekt: string = "";
+
+        let ziel: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
+        for (let i: number = 0; i < ziel.length; i++) {
+            if (ziel[i].value != "0") {
+                meinobjekt += ziel[i].name;
+                meinobjekt += "=" + ziel[i].value + "&";
+            }
+        }
+        serveradresse += meinobjekt;
+        console.log(serveradresse);
+
+        sendRequestWithCustomData(serveradresse);
+    }
+
+    //Die Option die beiden Funktionen in der main.ts zu schreiben
+    // function sendRequestWithCustomData(_meinobjekt: string): void {
+    //     let xhr: XMLHttpRequest = new XMLHttpRequest();
+    //     xhr.open("GET", address + "?color=" + _mrinobjekt, true);
+    //     xhr.addEventListener("readystatechange", handleStateChange);
+    //     xhr.send();
+    // }
+
+
+
 }
