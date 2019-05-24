@@ -29,7 +29,7 @@ var DBClient;
         let inputs = document.getElementsByTagName("input");
         let query = "command=search";
         query += "&suche=" + inputs[3].value;
-        sendRequest(query, handleSearchResponse);
+        sendRequest(query, handleFindResponse);
     }
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
@@ -50,12 +50,6 @@ var DBClient;
             output.value = xhr.response;
             let responseAsJson = JSON.parse(xhr.response);
             console.log(responseAsJson);
-        }
-    }
-    function handleSearchResponse(_event) {
-        let xhr = _event.target;
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
         }
     }
 })(DBClient || (DBClient = {}));

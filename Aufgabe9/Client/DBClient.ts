@@ -33,7 +33,7 @@ namespace DBClient {
         let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
         let query: string = "command=search";
         query += "&suche=" + inputs[3].value;
-        sendRequest(query, handleSearchResponse);
+        sendRequest(query, handleFindResponse);
     }
 
 
@@ -58,13 +58,6 @@ namespace DBClient {
             output.value = xhr.response;
             let responseAsJson: JSON = JSON.parse(xhr.response);
             console.log(responseAsJson);
-        }
-    }
-
-    function handleSearchResponse(_event: ProgressEvent): void {
-        let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            alert(xhr.response);
         }
     }
 }
