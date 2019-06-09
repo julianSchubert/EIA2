@@ -120,39 +120,39 @@ function kiste(_x: number, _z: number): void {
     crc.stroke(klappe);
 }
 
-function fisch(_a: number, _b: number): void {
+function fisch(x: number, y: number): void {
     let flosse: Path2D = new Path2D();
-    flosse.moveTo(_a, _b);
-    flosse.lineTo(_a, _b + 30);
-    flosse.lineTo(_a + 15, _b + 15);
+    flosse.moveTo(x, y);
+    flosse.lineTo(x, y + 30);
+    flosse.lineTo(x + 15, y + 15);
     flosse.closePath();
     crc.fillStyle = "darkorange";
     crc.strokeStyle = "darkorange";
     crc.fill(flosse);
     crc.stroke(flosse);
     let hinten: Path2D = new Path2D();
-    hinten.moveTo(_a + 15, _b + 15);
-    hinten.lineTo(_a + 45, _b - 5);
-    hinten.lineTo(_a + 45, _b + 35);
+    hinten.moveTo(x + 15, y + 15);
+    hinten.lineTo(x + 45, y - 5);
+    hinten.lineTo(x + 45, y + 35);
     hinten.closePath();
     crc.fillStyle = "darkorange";
     crc.strokeStyle = "darkorange";
     crc.fill(hinten);
     crc.stroke(hinten);
     let kopf: Path2D = new Path2D();
-    kopf.moveTo(_a + 45, _b - 5);
-    kopf.bezierCurveTo(150, 300, 250, 300, _a + 45, _b + 35);
-    // kopf.arc(_a + 45, _b + 15, 20, 1.5 * Math.PI, 0.5 * Math.PI); 
+    kopf.moveTo(x + 45, y - 5);
+    kopf.bezierCurveTo(150, 300, 250, 300, x + 45, y + 35);
+    // kopf.arc(x + 45, y + 15, 20, 1.5 * Math.PI, 0.5 * Math.PI); 
     crc.fillStyle = "darkorange";
     crc.strokeStyle = "darkorange";
     crc.fill(kopf);
     let auge: Path2D = new Path2D();
-    auge.arc(_a + 55, _b + 5, 5, 0, 2 * Math.PI);
+    auge.arc(x + 55, y + 5, 5, 0, 2 * Math.PI);
     crc.fillStyle = "white";
     crc.fill(auge);
     crc.stroke(auge);
     let iris: Path2D = new Path2D();
-    iris.arc(_a + 55, _b + 5, 2, 0, 2 * Math.PI);
+    iris.arc(x + 55, y + 5, 2, 0, 2 * Math.PI);
     crc.fillStyle = "black";
     crc.fill(iris);
     crc.stroke(iris);
