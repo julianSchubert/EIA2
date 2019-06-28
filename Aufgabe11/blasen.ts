@@ -1,4 +1,4 @@
-namespace task11{
+namespace task11 {
 
     export class Blubb {
         x: number;

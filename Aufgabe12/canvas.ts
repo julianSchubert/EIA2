@@ -2,92 +2,43 @@ namespace task12 {
     document.addEventListener("DOMContentLoaded", init);
     let canvas: HTMLCanvasElement;
     export let crc: CanvasRenderingContext2D;
-    let dingeUnterWasserArray: DingeUnterWasser[] = [];
+    export let allesInBewegungArray: AllesInBewegung[] = [];
     let fps: number = 30;
     let imageData: ImageData;
 
     function init(): void {
+        
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
         zeichneHintergrund();
+        canvas.addEventListener("click", füttern);
         imageData = crc.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i: number = 0; i < 3; i++) {
-            let bewegt: AllesInBewegung = new AllesInBewegung();
-            dingeUnterWasserArray.push(bewegt);
+        for (let i: number = 0; i < 20; i++) {
+            let blase: AllesInBewegung = new AllesInBewegung(Math.random());
+            allesInBewegungArray.push(blase);
         }
-        // for (let i: number = 0; i < 3; i++) {
-        //     let ice: IceCone = new IceCone("blue");
-        //     iceArray.push(ice);
-        // }
+        for (let i: number = 0; i < 5; i++) {
+            let fisch: Fisch = new Fisch();
+            allesInBewegungArray.push(fisch);
+        }
+        for (let i: number = 0; i < 8; i++) {
+            let fisch: OrangerFisch = new OrangerFisch();
+            allesInBewegungArray.push(fisch);
+        }
+  
 
-        // for (let i: number = 0; i < 3; i++) {
-        // 	let bewegung: AllesInBewegung = new AllesInBewegung("red");
-        // 	dingeUnterWasser.push(bewegung);
-
-        //Fisch
-        // for (let i: number = 0; i < 5; i++) {
-        //     let x: number = Math.random() * 650;
-        //     let y: number = Math.random() * 500;
-        //     let dx: number = Math.random() * 7;
-        //     let dy: number = Math.random() * 1.8;
-        //     let fisch: Fisch;
-        //     fisch = new Fisch();
-        //     fisch.x = x;
-        //     fisch.y = y;
-        //     fisch.dx = dx;
-        //     fisch.dy = dy;
-        //     fischArray.push(fisch);
-        //     fisch.draw();
-        // }
-        // update();
-        // //Blubberblasen
-        // for (let i: number = 0; i < 20; i++) {
-        //     let x: number = 630;
-        //     let y: number = 480;
-        //     let dx: number = Math.random() * 1.5;
-        //     let dy: number = Math.random() * -10;
-        //     let blase: Blubb;
-        //     blase = new Blubb();
-        //     blase.x = x;
-        //     blase.y = y;
-        //     blase.dx = dx;
-        //     blase.dy = dy;
-        //     blasenArray.push(blase);
-        //     blase.draw();
-        // }
-        // update();
-        // //2ter Fisch
-        // for (let i: number = 0; i < 6; i++) {
-        //     let x: number = Math.random() * 650;
-        //     let y: number = Math.random() * 500;
-        //     let dx: number = Math.random() * -5;
-        //     let dy: number = Math.random() * -1;
-        //     let orangerfisch: OrangerFisch;
-        //     orangerfisch = new OrangerFisch();
-        //     orangerfisch.x = x;
-        //     orangerfisch.y = y;
-        //     orangerfisch.dx = dx;
-        //     orangerfisch.dy = dy;
-        //     nochEinFischArray.push(orangerfisch);
-        //     orangerfisch.draw();
-        // }
         update();
     }
 
-    //warum zum ***** nimmt er .update nur wenn es auch in DingeUnterwasser steht? Der
-    //verdammte Hintergrund braucht keine update
     function update(): void {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
 
-        for (let i: number = 0; i < dingeUnterWasserArray.length; i++) {
-            //console.log("Wird er angezeigt?");
-            dingeUnterWasserArray[i].update();
+        for (let i: number = 0; i < allesInBewegungArray.length; i++) {
+            allesInBewegungArray[i].update();
         }
-
     }
-
     function zeichneHintergrund(): void {
         //boden
         crc.fillStyle = "olive";
@@ -186,3 +137,51 @@ namespace task12 {
         }
     }
 }
+//Aus der init rausgeholt
+        //Fisch
+        // for (let i: number = 0; i < 5; i++) {
+        //     let x: number = Math.random() * 650;
+        //     let y: number = Math.random() * 500;
+        //     let dx: number = Math.random() * 7;
+        //     let dy: number = Math.random() * 1.8;
+        //     let fisch: Fisch;
+        //     fisch = new Fisch();
+        //     fisch.x = x;
+        //     fisch.y = y;
+        //     fisch.dx = dx;
+        //     fisch.dy = dy;
+        //     fischArray.push(fisch);
+        //     fisch.draw();
+        // }
+        // update();
+        // //Blubberblasen
+        // for (let i: number = 0; i < 20; i++) {
+        //     let x: number = 630;
+        //     let y: number = 480;
+        //     let dx: number = Math.random() * 1.5;
+        //     let dy: number = Math.random() * -10;
+        //     let blase: Blubb;
+        //     blase = new Blubb();
+        //     blase.x = x;
+        //     blase.y = y;
+        //     blase.dx = dx;
+        //     blase.dy = dy;
+        //     blasenArray.push(blase);
+        //     blase.draw();
+        // }
+        // update();
+        // //2ter Fisch
+        // for (let i: number = 0; i < 6; i++) {
+        //     let x: number = Math.random() * 650;
+        //     let y: number = Math.random() * 500;
+        //     let dx: number = Math.random() * -5;
+        //     let dy: number = Math.random() * -1;
+        //     let orangerfisch: OrangerFisch;
+        //     orangerfisch = new OrangerFisch();
+        //     orangerfisch.x = x;
+        //     orangerfisch.y = y;
+        //     orangerfisch.dx = dx;
+        //     orangerfisch.dy = dy;
+        //     nochEinFischArray.push(orangerfisch);
+        //     orangerfisch.draw();
+        // }

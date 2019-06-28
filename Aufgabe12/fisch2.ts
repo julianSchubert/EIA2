@@ -1,10 +1,12 @@
 namespace task12 {
 
-    export class OrangerFisch {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
+    export class OrangerFisch extends Fisch {
+
+        constructor() {
+            super();
+            this.dx = Math.random() * -10;
+            this.dy = Math.random() * -2;
+        }
 
         draw(): void {
             let flosse: Path2D = new Path2D();
@@ -42,10 +44,6 @@ namespace task12 {
             crc.fillStyle = "black";
             crc.fill(iris);
             crc.stroke(iris);
-        }
-        update(): void {
-            this.move();
-            this.draw();
         }
 
         move(): void {

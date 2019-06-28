@@ -2,83 +2,35 @@ var task12;
 (function (task12) {
     document.addEventListener("DOMContentLoaded", init);
     let canvas;
-    let dingeUnterWasserArray = [];
+    task12.allesInBewegungArray = [];
     let fps = 30;
     let imageData;
     function init() {
         canvas = document.getElementsByTagName("canvas")[0];
         task12.crc = canvas.getContext("2d");
         zeichneHintergrund();
+        canvas.addEventListener("click", task12.füttern);
         imageData = task12.crc.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < 3; i++) {
-            let bewegt = new task12.AllesInBewegung();
-            dingeUnterWasserArray.push(bewegt);
+        for (let i = 0; i < 20; i++) {
+            let blase = new task12.AllesInBewegung(Math.random());
+            task12.allesInBewegungArray.push(blase);
         }
-        // for (let i: number = 0; i < 3; i++) {
-        //     let ice: IceCone = new IceCone("blue");
-        //     iceArray.push(ice);
-        // }
-        // for (let i: number = 0; i < 3; i++) {
-        // 	let bewegung: AllesInBewegung = new AllesInBewegung("red");
-        // 	dingeUnterWasser.push(bewegung);
-        //Fisch
-        // for (let i: number = 0; i < 5; i++) {
-        //     let x: number = Math.random() * 650;
-        //     let y: number = Math.random() * 500;
-        //     let dx: number = Math.random() * 7;
-        //     let dy: number = Math.random() * 1.8;
-        //     let fisch: Fisch;
-        //     fisch = new Fisch();
-        //     fisch.x = x;
-        //     fisch.y = y;
-        //     fisch.dx = dx;
-        //     fisch.dy = dy;
-        //     fischArray.push(fisch);
-        //     fisch.draw();
-        // }
-        // update();
-        // //Blubberblasen
-        // for (let i: number = 0; i < 20; i++) {
-        //     let x: number = 630;
-        //     let y: number = 480;
-        //     let dx: number = Math.random() * 1.5;
-        //     let dy: number = Math.random() * -10;
-        //     let blase: Blubb;
-        //     blase = new Blubb();
-        //     blase.x = x;
-        //     blase.y = y;
-        //     blase.dx = dx;
-        //     blase.dy = dy;
-        //     blasenArray.push(blase);
-        //     blase.draw();
-        // }
-        // update();
-        // //2ter Fisch
-        // for (let i: number = 0; i < 6; i++) {
-        //     let x: number = Math.random() * 650;
-        //     let y: number = Math.random() * 500;
-        //     let dx: number = Math.random() * -5;
-        //     let dy: number = Math.random() * -1;
-        //     let orangerfisch: OrangerFisch;
-        //     orangerfisch = new OrangerFisch();
-        //     orangerfisch.x = x;
-        //     orangerfisch.y = y;
-        //     orangerfisch.dx = dx;
-        //     orangerfisch.dy = dy;
-        //     nochEinFischArray.push(orangerfisch);
-        //     orangerfisch.draw();
-        // }
+        for (let i = 0; i < 5; i++) {
+            let fisch = new task12.Fisch();
+            task12.allesInBewegungArray.push(fisch);
+        }
+        for (let i = 0; i < 8; i++) {
+            let fisch = new task12.OrangerFisch();
+            task12.allesInBewegungArray.push(fisch);
+        }
         update();
     }
-    //warum zum ***** nimmt er .update nur wenn es auch in DingeUnterwasser steht? Der
-    //verdammte Hintergrund braucht keine update
     function update() {
         window.setTimeout(update, 1000 / fps);
         task12.crc.clearRect(0, 0, canvas.width, canvas.height);
         task12.crc.putImageData(imageData, 0, 0);
-        for (let i = 0; i < dingeUnterWasserArray.length; i++) {
-            //console.log("Wird er angezeigt?");
-            dingeUnterWasserArray[i].update();
+        for (let i = 0; i < task12.allesInBewegungArray.length; i++) {
+            task12.allesInBewegungArray[i].update();
         }
     }
     function zeichneHintergrund() {
@@ -179,4 +131,52 @@ var task12;
         }
     }
 })(task12 || (task12 = {}));
+//Aus der init rausgeholt
+//Fisch
+// for (let i: number = 0; i < 5; i++) {
+//     let x: number = Math.random() * 650;
+//     let y: number = Math.random() * 500;
+//     let dx: number = Math.random() * 7;
+//     let dy: number = Math.random() * 1.8;
+//     let fisch: Fisch;
+//     fisch = new Fisch();
+//     fisch.x = x;
+//     fisch.y = y;
+//     fisch.dx = dx;
+//     fisch.dy = dy;
+//     fischArray.push(fisch);
+//     fisch.draw();
+// }
+// update();
+// //Blubberblasen
+// for (let i: number = 0; i < 20; i++) {
+//     let x: number = 630;
+//     let y: number = 480;
+//     let dx: number = Math.random() * 1.5;
+//     let dy: number = Math.random() * -10;
+//     let blase: Blubb;
+//     blase = new Blubb();
+//     blase.x = x;
+//     blase.y = y;
+//     blase.dx = dx;
+//     blase.dy = dy;
+//     blasenArray.push(blase);
+//     blase.draw();
+// }
+// update();
+// //2ter Fisch
+// for (let i: number = 0; i < 6; i++) {
+//     let x: number = Math.random() * 650;
+//     let y: number = Math.random() * 500;
+//     let dx: number = Math.random() * -5;
+//     let dy: number = Math.random() * -1;
+//     let orangerfisch: OrangerFisch;
+//     orangerfisch = new OrangerFisch();
+//     orangerfisch.x = x;
+//     orangerfisch.y = y;
+//     orangerfisch.dx = dx;
+//     orangerfisch.dy = dy;
+//     nochEinFischArray.push(orangerfisch);
+//     orangerfisch.draw();
+// }
 //# sourceMappingURL=canvas.js.map

@@ -1,7 +1,18 @@
 namespace task12 {
-    export class AllesInBewegung extends DingeUnterWasser {
+    export class AllesInBewegung {
+        x: number;
+        y: number;
         dx: number;
         dy: number;
+        
+
+        constructor(_x: number) {
+            this.x = 630;
+            this.y = 485;
+            this.dx = _x * 4;
+            this.dy = Math.random() * -15;
+        }
+
 
         draw(): void {
             let blase: Path2D = new Path2D();
@@ -10,14 +21,14 @@ namespace task12 {
             crc.strokeStyle = "blue";
             crc.fill(blase);
             crc.stroke(blase);
-            console.log("Hallo");
+
         }
 
         update(): void {
             this.move();
             this.draw();
-            super.update();
         }
+        
         move(): void {
             this.x += this.dx;
             this.y += this.dy;
@@ -31,7 +42,6 @@ namespace task12 {
             }
         }
     }
-
 }
 
 

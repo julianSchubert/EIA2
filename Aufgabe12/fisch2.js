@@ -1,6 +1,11 @@
 var task12;
 (function (task12) {
-    class OrangerFisch {
+    class OrangerFisch extends task12.Fisch {
+        constructor() {
+            super();
+            this.dx = Math.random() * -10;
+            this.dy = Math.random() * -2;
+        }
         draw() {
             let flosse = new Path2D();
             flosse.moveTo(this.x, this.y);
@@ -38,10 +43,6 @@ var task12;
             task12.crc.fill(iris);
             task12.crc.stroke(iris);
         }
-        update() {
-            this.move();
-            this.draw();
-        }
         move() {
             this.x += this.dx;
             this.y += this.dy;
@@ -55,4 +56,4 @@ var task12;
     }
     task12.OrangerFisch = OrangerFisch;
 })(task12 || (task12 = {}));
-//# sourceMappingURL=fisch2.js.map
+//# sourceMappingURL=Fisch2.js.map

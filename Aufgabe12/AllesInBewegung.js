@@ -1,6 +1,12 @@
 var task12;
 (function (task12) {
-    class AllesInBewegung extends task12.DingeUnterWasser {
+    class AllesInBewegung {
+        constructor(_x) {
+            this.x = 630;
+            this.y = 485;
+            this.dx = _x * 4;
+            this.dy = Math.random() * -15;
+        }
         draw() {
             let blase = new Path2D();
             blase.arc(this.x, this.y, 10, 0, 2 * Math.PI);
@@ -8,12 +14,10 @@ var task12;
             task12.crc.strokeStyle = "blue";
             task12.crc.fill(blase);
             task12.crc.stroke(blase);
-            console.log("Hallo");
         }
         update() {
             this.move();
             this.draw();
-            super.update();
         }
         move() {
             this.x += this.dx;

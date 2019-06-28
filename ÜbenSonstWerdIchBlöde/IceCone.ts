@@ -1,4 +1,4 @@
-namespace task12 {
+namespace L11 {
 	export class IceCone {
 		x: number;
 		y: number;
@@ -9,8 +9,8 @@ namespace task12 {
 		constructor(_color: string) {
 			this.x = Math.random() * crc.canvas.width;
 			this.y = Math.random() * crc.canvas.height;
-			this.dx = Math.random() * 10 - 5;
-			this.dy = Math.random() * 10 - 5;
+			this.dx = Math.random() * 10 ;
+			this.dy = Math.random() * 10 ;
 			
 			// this.color = randomColor();
 			this.color = _color;
