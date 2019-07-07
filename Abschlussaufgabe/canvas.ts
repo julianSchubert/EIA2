@@ -7,7 +7,7 @@ namespace endtask {
     let imageData: ImageData;
 
     function init(): void {
-
+        document.addEventListener("keydown", this.movespecial);
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
         zeichneHintergrund();
@@ -25,24 +25,19 @@ namespace endtask {
             let fisch: OrangerFisch = new OrangerFisch();
             allesInBewegungArray.push(fisch);
         }
-
+        let spielerfisch: SpielerFisch = new SpielerFisch();
+        allesInBewegungArray.push(spielerfisch);
         update();
 
     }
-    function test(): number {
-        //let i: number = Math.floor(Math.random() * 33);
-        let i: number = 3;
-        let x: number = allesInBewegungArray[i].typ;
-        console.log(x);
-        return x;
-    }
+
     //Die Stelle des gefressenen kommt von einer Funktion außerhalb Wird übergeben.
     function update(): void {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
 
-        punktzahlEintragen(punktzahlBerechnen(test())); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
+       // punktzahlEintragen(punktzahlBerechnen(test())); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
         //für die Stelle im Array sollte die gefressener Fisch Stelle übergeben werden allesInBewegungArray[test()].typ)
         for (let i: number = 0; i < allesInBewegungArray.length; i++) {
             allesInBewegungArray[i].update();
