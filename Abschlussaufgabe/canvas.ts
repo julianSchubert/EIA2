@@ -7,15 +7,24 @@ namespace endtask {
     let imageData: ImageData;
 
     function init(): void {
-        document.addEventListener("keydown", this.movespecial);
+
         canvas = document.getElementsByTagName("canvas")[0];
         crc = canvas.getContext("2d");
         zeichneHintergrund();
         canvas.addEventListener("click", füttern);
+
+        document.addEventListener("keydown", fischbewegen);
+        document.addEventListener("keyup", fischstoppen);
+
+
         imageData = crc.getImageData(0, 0, canvas.width, canvas.height);
         for (let i: number = 0; i < 20; i++) {
             let blase: AllesInBewegung = new AllesInBewegung(Math.random());
             allesInBewegungArray.push(blase);
+        }
+        for (let i: number = 0; i < 1; i++) {
+            let spacefisch: SpaceFisch = new SpaceFisch();
+            allesInBewegungArray.push(spacefisch);
         }
         for (let i: number = 0; i < 5; i++) {
             let fisch: Fisch = new Fisch();
@@ -25,8 +34,10 @@ namespace endtask {
             let fisch: OrangerFisch = new OrangerFisch();
             allesInBewegungArray.push(fisch);
         }
-        let spielerfisch: SpielerFisch = new SpielerFisch();
-        allesInBewegungArray.push(spielerfisch);
+        for (let i: number = 0; i < 7; i++) {
+            let fisch: Fisch = new PinkerFisch();
+            allesInBewegungArray.push(fisch);
+        }
         update();
 
     }
@@ -36,8 +47,8 @@ namespace endtask {
         window.setTimeout(update, 1000 / fps);
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
-
-       // punktzahlEintragen(punktzahlBerechnen(test())); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
+        fressen();
+        punktzahlEintragen(fressen()); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
         //für die Stelle im Array sollte die gefressener Fisch Stelle übergeben werden allesInBewegungArray[test()].typ)
         for (let i: number = 0; i < allesInBewegungArray.length; i++) {
             allesInBewegungArray[i].update();
@@ -46,10 +57,10 @@ namespace endtask {
 
     function zeichneHintergrund(): void {
         //boden
-        crc.fillStyle = "olive";
+        crc.fillStyle = "ivory";
         crc.fillRect(0, 500, 800, 100);
         //wasser
-        crc.fillStyle = "teal";
+        crc.fillStyle = "navy";
         crc.fillRect(0, 0, 800, 500);
         //kies
         for (let i: number = 0; i < 20; i++) {
@@ -63,19 +74,17 @@ namespace endtask {
             crc.fill(kies);
             crc.stroke(kies);
         }
-        //seegras
-        for (let i: number = 0; i < 8; i++) {
-            let x: number = Math.random() * 650;
-            let y: number = 500 + Math.random() * 50;
-            let seegras: Path2D = new Path2D();
-            seegras.moveTo(x, y);
-            seegras.bezierCurveTo(x + 5, y - 15, x - 5, y - 20, x + 15, y - 70);
-            seegras.bezierCurveTo(x, y - 20, x + 10, y - 15, x + 8, y);
-            seegras.closePath();
-            crc.fillStyle = "limegreen";
-            crc.strokeStyle = "darkgreen";
-            crc.fill(seegras);
-            crc.stroke(seegras);
+        //sterne
+        for (let i: number = 0; i < 20; i++) {
+            let x: number = Math.random() * 700;
+            let y: number = 20 + Math.random() * 490;
+            let kies: Path2D = new Path2D();
+            kies.arc(x, y, 5, 0, 2 * Math.PI);
+            kies.closePath();
+            crc.fillStyle = "#f4d705";
+            crc.strokeStyle = "#f4d705";
+            crc.fill(kies);
+            crc.stroke(kies);
         }
         //kiste
         for (let i: number = 0; i < 1; i++) {
@@ -139,6 +148,20 @@ namespace endtask {
             crc.fillStyle = "sienna";
             crc.fill(klappe);
             crc.stroke(klappe);
+        }
+        //seegras
+        for (let i: number = 0; i < 8; i++) {
+            let x: number = Math.random() * 650;
+            let y: number = 600 + Math.random() * 2;
+            let seegras: Path2D = new Path2D();
+            seegras.moveTo(x, y);
+            seegras.bezierCurveTo(x + 5, y - 15, x - 5, y - 20, x + 15, y - 70);
+            seegras.bezierCurveTo(x, y - 20, x + 10, y - 15, x + 8, y);
+            seegras.closePath();
+            crc.fillStyle = "gold";
+            crc.strokeStyle = "darkgreen";
+            crc.fill(seegras);
+            crc.stroke(seegras);
         }
     }
 }

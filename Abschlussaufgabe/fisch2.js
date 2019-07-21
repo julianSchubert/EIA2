@@ -5,6 +5,8 @@ var endtask;
             super();
             this.dx = Math.random() * -10;
             this.dy = Math.random() * -2;
+            this.typ = 3;
+            this.groesse = 25;
         }
         draw() {
             let flosse = new Path2D();

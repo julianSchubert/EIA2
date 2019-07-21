@@ -7,7 +7,7 @@ var endtask;
             this.y = _y;
             this.dx = Math.random() * 0.3;
             this.dy = Math.random() * 4;
-            this.typ = 3;
+            //this.typ = 3;
         }
         draw() {
             let futter = new Path2D();

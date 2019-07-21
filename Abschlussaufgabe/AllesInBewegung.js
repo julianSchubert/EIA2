@@ -7,6 +7,7 @@ var endtask;
             this.dx = _x * 4;
             this.dy = Math.random() * -15;
             this.typ = 1;
+            this.groesse = 1;
         }
         draw() {
             let blase = new Path2D();

@@ -5,6 +5,7 @@ namespace endtask {
         dx: number;
         dy: number;
         typ: number;
+        groesse: number;
         
 
         constructor(_x: number) {
@@ -13,6 +14,7 @@ namespace endtask {
             this.dx = _x * 4;
             this.dy = Math.random() * -15;
             this.typ = 1;
+            this.groesse = 1;
         }
 
 

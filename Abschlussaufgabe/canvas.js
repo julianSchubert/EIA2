@@ -6,15 +6,20 @@ var endtask;
     let fps = 30;
     let imageData;
     function init() {
-        document.addEventListener("keydown", this.movespecial);
         canvas = document.getElementsByTagName("canvas")[0];
         endtask.crc = canvas.getContext("2d");
         zeichneHintergrund();
         canvas.addEventListener("click", endtask.füttern);
+        document.addEventListener("keydown", endtask.fischbewegen);
+        document.addEventListener("keyup", endtask.fischstoppen);
         imageData = endtask.crc.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < 20; i++) {
             let blase = new endtask.AllesInBewegung(Math.random());
             endtask.allesInBewegungArray.push(blase);
+        }
+        for (let i = 0; i < 1; i++) {
+            let spacefisch = new endtask.SpaceFisch();
+            endtask.allesInBewegungArray.push(spacefisch);
         }
         for (let i = 0; i < 5; i++) {
             let fisch = new endtask.Fisch();
@@ -24,8 +29,10 @@ var endtask;
             let fisch = new endtask.OrangerFisch();
             endtask.allesInBewegungArray.push(fisch);
         }
-        let spielerfisch = new endtask.SpielerFisch();
-        endtask.allesInBewegungArray.push(spielerfisch);
+        for (let i = 0; i < 7; i++) {
+            let fisch = new endtask.PinkerFisch();
+            endtask.allesInBewegungArray.push(fisch);
+        }
         update();
     }
     //Die Stelle des gefressenen kommt von einer Funktion außerhalb Wird übergeben.
@@ -33,7 +40,8 @@ var endtask;
         window.setTimeout(update, 1000 / fps);
         endtask.crc.clearRect(0, 0, canvas.width, canvas.height);
         endtask.crc.putImageData(imageData, 0, 0);
-        // punktzahlEintragen(punktzahlBerechnen(test())); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
+        endtask.fressen();
+        endtask.punktzahlEintragen(endtask.fressen()); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
         //für die Stelle im Array sollte die gefressener Fisch Stelle übergeben werden allesInBewegungArray[test()].typ)
         for (let i = 0; i < endtask.allesInBewegungArray.length; i++) {
             endtask.allesInBewegungArray[i].update();
@@ -41,10 +49,10 @@ var endtask;
     }
     function zeichneHintergrund() {
         //boden
-        endtask.crc.fillStyle = "olive";
+        endtask.crc.fillStyle = "ivory";
         endtask.crc.fillRect(0, 500, 800, 100);
         //wasser
-        endtask.crc.fillStyle = "teal";
+        endtask.crc.fillStyle = "navy";
         endtask.crc.fillRect(0, 0, 800, 500);
         //kies
         for (let i = 0; i < 20; i++) {
@@ -58,19 +66,17 @@ var endtask;
             endtask.crc.fill(kies);
             endtask.crc.stroke(kies);
         }
-        //seegras
-        for (let i = 0; i < 8; i++) {
-            let x = Math.random() * 650;
-            let y = 500 + Math.random() * 50;
-            let seegras = new Path2D();
-            seegras.moveTo(x, y);
-            seegras.bezierCurveTo(x + 5, y - 15, x - 5, y - 20, x + 15, y - 70);
-            seegras.bezierCurveTo(x, y - 20, x + 10, y - 15, x + 8, y);
-            seegras.closePath();
-            endtask.crc.fillStyle = "limegreen";
-            endtask.crc.strokeStyle = "darkgreen";
-            endtask.crc.fill(seegras);
-            endtask.crc.stroke(seegras);
+        //sterne
+        for (let i = 0; i < 20; i++) {
+            let x = Math.random() * 700;
+            let y = 20 + Math.random() * 490;
+            let kies = new Path2D();
+            kies.arc(x, y, 5, 0, 2 * Math.PI);
+            kies.closePath();
+            endtask.crc.fillStyle = "#f4d705";
+            endtask.crc.strokeStyle = "#f4d705";
+            endtask.crc.fill(kies);
+            endtask.crc.stroke(kies);
         }
         //kiste
         for (let i = 0; i < 1; i++) {
@@ -134,6 +140,20 @@ var endtask;
             endtask.crc.fillStyle = "sienna";
             endtask.crc.fill(klappe);
             endtask.crc.stroke(klappe);
+        }
+        //seegras
+        for (let i = 0; i < 8; i++) {
+            let x = Math.random() * 650;
+            let y = 600 + Math.random() * 2;
+            let seegras = new Path2D();
+            seegras.moveTo(x, y);
+            seegras.bezierCurveTo(x + 5, y - 15, x - 5, y - 20, x + 15, y - 70);
+            seegras.bezierCurveTo(x, y - 20, x + 10, y - 15, x + 8, y);
+            seegras.closePath();
+            endtask.crc.fillStyle = "gold";
+            endtask.crc.strokeStyle = "darkgreen";
+            endtask.crc.fill(seegras);
+            endtask.crc.stroke(seegras);
         }
     }
 })(endtask || (endtask = {}));
