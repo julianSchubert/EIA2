@@ -36,6 +36,7 @@ var endtask;
             endtask.allesInBewegungArray.push(fisch);
         }
         update();
+        endtask.refresh();
     }
     //Die Stelle des gefressenen kommt von einer Funktion außerhalb Wird übergeben.
     function update() {

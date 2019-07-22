@@ -2,27 +2,21 @@ namespace endtask {
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress: string = "https://eia2-julian.herokuapp.com/";
 
-  
+
 
     export function insert(): void {
         let query: string = "command=insert";
         query += "&name=" + spielername;
-        query += "&punktzahl" + punktzahl;
+        query += "&punktzahl=" + punktzahl;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
 
-    function refresh(_event: Event): void {
+    export function refresh(): void {
         let query: string = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
 
-    function suche(_event: Event): void {
-        let inputs: HTMLCollectionOf<HTMLInputElement> = document.getElementsByTagName("input");
-        let query: string = "command=search";
-        query += "&suche=" + inputs[3].value;
-        sendRequest(query, handleFindResponse);
-    }
 
 
     function sendRequest(_query: string, _callback: EventListener): void {
@@ -38,14 +32,27 @@ namespace endtask {
             alert(xhr.response);
         }
     }
-
-    function handleFindResponse(_event: ProgressEvent): void { //Schickt die Sachen aus dem Inputfeld an den Server
+    export let alleSpielerArray: Name[];
+    function handleFindResponse(_event: ProgressEvent): void {
         let xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson: JSON = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            alleSpielerArray = JSON.parse(xhr.response);
+            for (let i: number = 0; i < alleSpielerArray.length; i++) {
+                alleSpielerArray.sort(sortiereHighscore);
+            } 
+            console.log(alleSpielerArray);
         }
+
+    }
+    function sortiereHighscore(a: Name, b: Name): number {
+        let punktzahlA: number = a.punktzahl;
+        let punktzahlB: number = b.punktzahl;
+        if (punktzahlA < punktzahlB) {
+            return 1;
+        }
+        if (punktzahlA > punktzahlB) {
+            return -1;
+        }
+        return 0;
     }
 }

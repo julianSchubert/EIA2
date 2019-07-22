@@ -5,21 +5,16 @@ var endtask;
     function insert() {
         let query = "command=insert";
         query += "&name=" + endtask.spielername;
-        query += "&punktzahl" + endtask.punktzahl;
+        query += "&punktzahl=" + endtask.punktzahl;
         console.log(query);
         sendRequest(query, handleInsertResponse);
     }
     endtask.insert = insert;
-    function refresh(_event) {
+    function refresh() {
         let query = "command=refresh";
         sendRequest(query, handleFindResponse);
     }
-    function suche(_event) {
-        let inputs = document.getElementsByTagName("input");
-        let query = "command=search";
-        query += "&suche=" + inputs[3].value;
-        sendRequest(query, handleFindResponse);
-    }
+    endtask.refresh = refresh;
     function sendRequest(_query, _callback) {
         let xhr = new XMLHttpRequest();
         xhr.open("GET", serverAddress + "?" + _query, true);
@@ -35,11 +30,23 @@ var endtask;
     function handleFindResponse(_event) {
         let xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
-            let output = document.getElementsByTagName("textarea")[0];
-            output.value = xhr.response;
-            let responseAsJson = JSON.parse(xhr.response);
-            console.log(responseAsJson);
+            endtask.alleSpielerArray = JSON.parse(xhr.response);
+            for (let i = 0; i < endtask.alleSpielerArray.length; i++) {
+                endtask.alleSpielerArray.sort(sortiereHighscore);
+            }
+            console.log(endtask.alleSpielerArray);
         }
+    }
+    function sortiereHighscore(a, b) {
+        let punktzahlA = a.punktzahl;
+        let punktzahlB = b.punktzahl;
+        if (punktzahlA < punktzahlB) {
+            return 1;
+        }
+        if (punktzahlA > punktzahlB) {
+            return -1;
+        }
+        return 0;
     }
 })(endtask || (endtask = {}));
 //# sourceMappingURL=DBClient.js.map

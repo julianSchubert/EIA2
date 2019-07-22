@@ -17,6 +17,8 @@ namespace endtask {
             obereflosse.lineTo(this.x - 1.25 * r, this.y - 1.25 * r);
             obereflosse.lineTo(this.x - 2.5 * r, this.y - 1 * r);
             obereflosse.lineTo(this.x - 2 * r, this.y - 0.75 * r);
+            crc.fillStyle = "blue";
+            crc.strokeStyle = "lime";
             crc.fill(obereflosse);
             crc.stroke(obereflosse);
             let hinten: Path2D = new Path2D();
@@ -31,6 +33,8 @@ namespace endtask {
             hinten.lineTo(this.x - 3.5 * r, this.y + 1.25 * r);
             hinten.lineTo(this.x - 2.75 * r, this.y + 0.65 * r);
             hinten.closePath();
+            crc.fillStyle = "blue";
+            crc.strokeStyle = "lime";
             crc.fill(hinten);
             crc.stroke(hinten);
             let koerper: Path2D = new Path2D();
@@ -40,7 +44,7 @@ namespace endtask {
             koerper.quadraticCurveTo(this.x - 1.5 * r, this.y + 1.25 * r, this.x, this.y);
             koerper.closePath();
             crc.fillStyle = "lime";
-            crc.strokeStyle = "lime";
+            crc.strokeStyle = "blue";
             crc.fill(koerper);
             crc.stroke(koerper);
             let flosse: Path2D = new Path2D();
@@ -49,8 +53,8 @@ namespace endtask {
             flosse.lineTo(this.x - 2.5 * r, this.y + 1.25 * r);
             flosse.lineTo(this.x - 2 * r, this.y + 0.25 * r);
             flosse.closePath();
-            crc.fillStyle = "#0534f4";
-            crc.strokeStyle = "#0534f4";
+            crc.fillStyle = "blue";
+            crc.strokeStyle = "lime";
             crc.fill(flosse);
             crc.stroke(flosse);
             let auge: Path2D = new Path2D;
@@ -88,7 +92,5 @@ namespace endtask {
                 this.x = 800;
             }
         }
-   
-    }
-    
+    } 
 }

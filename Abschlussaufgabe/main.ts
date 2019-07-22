@@ -9,7 +9,7 @@ namespace endtask {
             allesInBewegungArray.push(futter);
         }
     }
-
+    let anfrage: boolean = true;
     let spielerfisch: SpielerFisch = new SpielerFisch();
     allesInBewegungArray.push(spielerfisch);
     //Der Fisch wird von den anderen Fischen verdeckt, wann
@@ -56,7 +56,7 @@ namespace endtask {
         for (let i: number = 0; i < allesInBewegungArray.length; i++) {
             let k: AllesInBewegung = allesInBewegungArray[i];
             
-            if (spielerfisch.x + 30 > k.x && spielerfisch.x - 10 < k.x && spielerfisch.y - 20 < k.y && spielerfisch.y + 20  > k.y && allesInBewegungArray[i] != spielerfisch ) { 
+            if (spielerfisch.x + 30 > k.x && spielerfisch.x - 10 - 0.25 * spielerfisch.groesse < k.x && spielerfisch.y - 15 - 0.25 * spielerfisch.groesse < k.y && spielerfisch.y + 15 + 0.25 * spielerfisch.groesse  > k.y && allesInBewegungArray[i] != spielerfisch ) { 
             
                 //geht sicher eleganter aber läuft 
                 // läuft mit spielerfisch spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y 
@@ -99,6 +99,7 @@ namespace endtask {
                     }
                 }
                 else if (spielerfisch.groesse < k.groesse) {
+                    beenden();
                     duBistEinLoser();
                     return punktzahl;
                 }
@@ -127,44 +128,14 @@ namespace endtask {
     }
 
     function duBistEinLoser(): void {
-        beenden();
-        let punkte: string = String(punktzahl);
-        spielername = prompt("Punktzahl:" + punkte, "Wie ist dein Name Kadett");
-        insert();
+        if (anfrage == true) {
+            beenden();
+            let punkte: string = String(punktzahl);
+            spielername = prompt("Punktzahl:" + punkte, "Wie ist dein Name Kadett");
+            insert();
+            anfrage = false;
+        }
+        
     }
 
 }
-                // if (spielerfisch.): void {
-            //
-            //}
-            //spielerfisch.x + 3.5 * spielerfisch.groesse, spielerfisch.y + 0.35 * spielerfisch.groesse, spielerfisch.groesse, 1.5 * spielerfisch.groesse
-            // function hitTestPoint(x1, y1, w1, h1, x2, y2) {
-            //     //x1, y1 = x and y coordinates of object 1
-            //     //w1, h1 = width and height of object 1
-            //     //x2, y2 = x and y coordinates of object 2 (usually midpt)
-            //     if ((x1 <= x2 && x1 + w1 >= x2) &&
-            //         (y1 <= y2 && y1 + h1 >= y2))
-            //         return true;
-            //     else
-            //         return false;
-            // }
-            
-    //Punktzahlberechnung und Eintragung
-    // let punktzahl: number = 0;
-    // export function punktzahlBerechnen(_typ: number): number {
-   
-    //     let fischtyp: number = _typ;
-    //     //Hier die if abfrage nach dem Typ
-    //     if (fischtyp == 1) {
-    //         punktzahl += 15;
-    //     }
-    //     else if (fischtyp == 2) {
-    //         punktzahl += 30;
-    //     }
-    //     else if (fischtyp == 3) {
-    //         punktzahl += 4;
-    //     }
-    //     console.log(punktzahl);
-    //     return punktzahl;
-
-    // }

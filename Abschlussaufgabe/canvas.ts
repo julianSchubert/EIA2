@@ -41,6 +41,7 @@ namespace endtask {
             allesInBewegungArray.push(fisch);
         }
         update();
+        refresh();
 
     }
 
