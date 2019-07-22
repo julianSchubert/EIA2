@@ -48,13 +48,13 @@ var endtask;
             endtask.crc.stroke(iris);
         }
         move() {
-            this.x += this.dx;
-            this.y += this.dy;
-            if (this.x > 800) {
-                this.x = 0;
+            this.x -= this.dx;
+            this.y -= this.dy;
+            if (this.x < 0) {
+                this.x = 800;
             }
-            if (this.y > 600) {
-                this.y = 0;
+            if (this.y < 0) {
+                this.y = 600;
             }
         }
     }

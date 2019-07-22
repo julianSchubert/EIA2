@@ -7,66 +7,57 @@ namespace endtask {
             this.y = 300;
             this.dx = 0;
             this.dy = 0;
-            this.groesse = 1;
+            this.groesse = 19;
         }
+
+
 
         draw(): void {
             let r: number = this.groesse; //Radius der Kreise
-            let obereflosse: Path2D = new Path2D();
-            obereflosse.moveTo(this.x - 19 * r, this.y - 10 * r);
-            obereflosse.lineTo(this.x - 25 * r, this.y - 25 * r);
-            obereflosse.lineTo(this.x - 50 * r, this.y - 20 * r);
-            obereflosse.lineTo(this.x - 40 * r, this.y - 15 * r);
-            crc.fill(obereflosse);
-            crc.stroke(obereflosse);
-            let hinten: Path2D = new Path2D();
-            hinten.moveTo(this.x - 60 * r, this.y - 10 * r);
-            hinten.lineTo(this.x - 75 * r, this.y - 20 * r);
-            hinten.lineTo(this.x - 100 * r, this.y - 5 * r);
-            hinten.lineTo(this.x - 80 * r, this.y - 10 * r);
-            hinten.lineTo(this.x - 70 * r, this.y - 5 * r);
-            hinten.lineTo(this.x - 70 * r, this.y + 10 * r);
-            hinten.lineTo(this.x - 80 * r, this.y + 15 * r);
-            hinten.lineTo(this.x - 100 * r, this.y + 5 * r);
-            hinten.lineTo(this.x - 75 * r, this.y + 25 * r);
-            hinten.lineTo(this.x - 55 * r, this.y + 13 * r);
-            hinten.closePath();
-            crc.fill(hinten);
-            crc.stroke(hinten);
-            let koerper: Path2D = new Path2D();
-            koerper.moveTo(this.x, this.y);
-            koerper.quadraticCurveTo(this.x - 30 * r, this.y - 30 * r, this.x - 70 * r, this.y - 5 * r);
-            koerper.lineTo(this.x - 70 * r, this.y + 10 * r);
-            koerper.quadraticCurveTo(this.x - 30 * r, this.y + 25 * r, this.x, this.y);
-            koerper.closePath();
+            let hintereflosse: Path2D = new Path2D();
+            hintereflosse.arc(this.x, this.y + 2 * r, r, 1.5 * Math.PI, Math.PI, true);
+            hintereflosse.lineTo(this.x - 0.5 * r, this.y + 3 * r);
+            hintereflosse.lineTo(this.x, this.y + 2 * r);
+            hintereflosse.arc(this.x + r, this.y + 2 * r, r, Math.PI, 1.5 * Math.PI);
+            hintereflosse.arc(this.x + r, this.y, r, 0.5 * Math.PI, Math.PI);
+            hintereflosse.lineTo(this.x - 0.5 * r, this.y - r);
+            hintereflosse.lineTo(this.x - r, this.y);
+            hintereflosse.arc(this.x, this.y, r, Math.PI, 0.5 * Math.PI, true);
+            hintereflosse.closePath();
             crc.fillStyle = "lime";
             crc.strokeStyle = "lime";
-            crc.fill(koerper);
-            crc.stroke(koerper);
-            let flosse: Path2D = new Path2D();
-            flosse.moveTo(this.x - 30 * r, this.y + 5 * r);
-            flosse.lineTo(this.x - 40 * r, this.y + 15 * r);
-            flosse.lineTo(this.x - 50 * r, this.y + 25 * r);
-            flosse.lineTo(this.x - 45 * r, this.y + 15 * r);
-            flosse.lineTo(this.x - 40 * r, this.y + 5 * r);
-            flosse.lineTo(this.x - 30 * r, this.y + 5 * r);
-            flosse.closePath();
-            crc.fillStyle = "#0534f4";
-            crc.strokeStyle = "#0534f4";
-            crc.fill(flosse);
-            crc.stroke(flosse);
-            let auge: Path2D = new Path2D;
-            auge.arc(this.x - 20 * r, this.y - 4 * r, 6 * r, 0, 2  * Math.PI);
+            crc.fill(hintereflosse);
+            crc.stroke(hintereflosse);
+            let rumpf: Path2D = new Path2D();
+            rumpf.moveTo(this.x + r, this.y + r);
+            rumpf.arc(this.x + 2 * r, this.y + r, r, Math.PI, 1.5 * Math.PI);
+            rumpf.lineTo(this.x + 3 * r, this.y + 0.25 * r);
+            rumpf.arc(this.x + 3.5 * r, this.y + 0.6 * r, 0.5 * r, 1.5 * Math.PI, 0.5 * Math.PI);
+            rumpf.arc(this.x + 3.5 * r, this.y + 1.5 * r, 0.25 * r, 1.5 * Math.PI, 0.5 * Math.PI);
+            rumpf.lineTo(this.x + 2 * r, this.y + 2 * r);
+            rumpf.arc(this.x + 2 * r, this.y + r, r, 0.5 * Math.PI, Math.PI);
+            crc.fillStyle = "lime";
+            crc.strokeStyle = "olive";
+            crc.fill(rumpf);
+            crc.stroke(rumpf);
+            let auge: Path2D = new Path2D();
+            auge.arc(this.x + 2 * r, this.y + 0.5 * r, 0.25 * r, 0, 2 * Math.PI);
             crc.fillStyle = "white";
-            crc.strokeStyle = "white";
             crc.fill(auge);
             crc.stroke(auge);
-            let pupille: Path2D = new Path2D;
-            pupille.arc(this.x - 15 * r, this.y - 4 * r, 1.5 * r, 0, 2 * Math.PI);
+            let iris: Path2D = new Path2D();
+            iris.arc(this.x + 2.1 * r, this.y + 0.5 * r, 0.1 * r, 0, 2 * Math.PI);
             crc.fillStyle = "black";
+            crc.fill(iris);
+            crc.stroke(iris);
+            let fressfeld: Path2D = new Path2D();
+            fressfeld.rect(this.x + 3.5 * r, this.y + 0.35 * r, r, 1.5 * r);
             crc.strokeStyle = "black";
-            crc.fill(pupille);
-            crc.stroke(pupille);
+            crc.stroke(fressfeld);
         }
+        move(): void {
+            //
+        }
+
     }
 }

@@ -49,51 +49,61 @@ var endtask;
         }
     }
     endtask.fischstoppen = fischstoppen;
-    let punktzahl = 0;
     function fressen() {
         for (let i = 0; i < endtask.allesInBewegungArray.length; i++) {
             let k = endtask.allesInBewegungArray[i];
-            if (spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y) { //geht sicher eleganter aber läuft
+            if (spielerfisch.x + 30 > k.x && spielerfisch.x - 10 < k.x && spielerfisch.y - 20 < k.y && spielerfisch.y + 20 > k.y && endtask.allesInBewegungArray[i] != spielerfisch) {
+                //geht sicher eleganter aber läuft 
+                // läuft mit spielerfisch spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y 
+                //spielerfisch.x + 2 * spielerfisch.groesse <= k.x && spielerfisch.x + 2 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 2 * spielerfisch.groesse <= k.y && spielerfisch.y + 2 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y 
+                console.log(spielerfisch.x);
                 //|| spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x + 5 && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x + 5 && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y + 5  && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y + 5) {
                 if (spielerfisch.groesse >= k.groesse) {
                     console.log("Erfolg");
                     if (k.typ == 1) {
                         endtask.allesInBewegungArray.splice(i, 1);
+                        let fisch = new endtask.PinkerFisch();
+                        endtask.allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 0.1;
-                        punktzahl += 1;
-                        return punktzahl;
+                        endtask.punktzahl += 1;
+                        return endtask.punktzahl;
                     }
                     else if (k.typ == 2) {
                         endtask.allesInBewegungArray.splice(i, 1);
+                        let fisch = new endtask.OrangerFisch();
+                        endtask.allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 1;
-                        punktzahl += 10;
-                        return punktzahl;
+                        endtask.punktzahl += 10;
+                        return endtask.punktzahl;
                     }
                     else if (k.typ == 3) {
                         endtask.allesInBewegungArray.splice(i, 1);
+                        let fisch = new endtask.Fisch();
+                        endtask.allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 1.5;
-                        punktzahl += 15;
-                        return punktzahl;
+                        endtask.punktzahl += 15;
+                        return endtask.punktzahl;
                     }
                     else if (k.typ == 4) {
                         endtask.allesInBewegungArray.splice(i, 1);
+                        let blase = new endtask.AllesInBewegung(Math.random());
+                        endtask.allesInBewegungArray.push(blase);
                         spielerfisch.groesse += 0.5;
-                        punktzahl += 5;
-                        return punktzahl;
+                        endtask.punktzahl += 5;
+                        return endtask.punktzahl;
                     }
                 }
                 else if (spielerfisch.groesse < k.groesse) {
-                    console.log("Loser");
-                    return punktzahl;
+                    duBistEinLoser();
+                    return endtask.punktzahl;
                 }
-                return punktzahl;
+                return endtask.punktzahl;
             }
         }
-        return punktzahl;
+        return endtask.punktzahl;
     }
     endtask.fressen = fressen;
     function punktzahlEintragen(_punktzahl) {
-        console.log("Geht es?");
         let element = document.getElementsByTagName("canvas")[0];
         if (element.getContext) {
             let crc = element.getContext("2d");
@@ -110,6 +120,12 @@ var endtask;
         }
     }
     endtask.punktzahlEintragen = punktzahlEintragen;
+    function duBistEinLoser() {
+        endtask.beenden();
+        let punkte = String(endtask.punktzahl);
+        endtask.spielername = prompt("Punktzahl:" + punkte, "Wie ist dein Name Kadett");
+        endtask.insert();
+    }
 })(endtask || (endtask = {}));
 // if (spielerfisch.): void {
 //

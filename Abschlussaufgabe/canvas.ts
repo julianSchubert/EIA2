@@ -3,9 +3,11 @@ namespace endtask {
     let canvas: HTMLCanvasElement;
     export let crc: CanvasRenderingContext2D;
     export let allesInBewegungArray: AllesInBewegung[] = [];
+    export let spielername: string;
+    export let punktzahl: number = 0;
     let fps: number = 30;
     let imageData: ImageData;
-
+    let fame: number;
     function init(): void {
 
         canvas = document.getElementsByTagName("canvas")[0];
@@ -30,11 +32,11 @@ namespace endtask {
             let fisch: Fisch = new Fisch();
             allesInBewegungArray.push(fisch);
         }
-        for (let i: number = 0; i < 8; i++) {
+        for (let i: number = 0; i < 4; i++) {
             let fisch: OrangerFisch = new OrangerFisch();
             allesInBewegungArray.push(fisch);
         }
-        for (let i: number = 0; i < 7; i++) {
+        for (let i: number = 0; i < 4; i++) {
             let fisch: Fisch = new PinkerFisch();
             allesInBewegungArray.push(fisch);
         }
@@ -44,7 +46,8 @@ namespace endtask {
 
     //Die Stelle des gefressenen kommt von einer Funktion außerhalb Wird übergeben.
     function update(): void {
-        window.setTimeout(update, 1000 / fps);
+        // window.setTimeout(update, 1000 / fps);
+        starten();
         crc.clearRect(0, 0, canvas.width, canvas.height);
         crc.putImageData(imageData, 0, 0);
         fressen();
@@ -163,5 +166,11 @@ namespace endtask {
             crc.fill(seegras);
             crc.stroke(seegras);
         }
+    }
+    function starten(): void {
+        fame = window.setTimeout(update, 1000 / fps);
+    }
+    export function beenden(): void {
+        window.clearTimeout(fame);
     }
 }

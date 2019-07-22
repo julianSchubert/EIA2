@@ -3,8 +3,10 @@ var endtask;
     document.addEventListener("DOMContentLoaded", init);
     let canvas;
     endtask.allesInBewegungArray = [];
+    endtask.punktzahl = 0;
     let fps = 30;
     let imageData;
+    let fame;
     function init() {
         canvas = document.getElementsByTagName("canvas")[0];
         endtask.crc = canvas.getContext("2d");
@@ -25,11 +27,11 @@ var endtask;
             let fisch = new endtask.Fisch();
             endtask.allesInBewegungArray.push(fisch);
         }
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 4; i++) {
             let fisch = new endtask.OrangerFisch();
             endtask.allesInBewegungArray.push(fisch);
         }
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 4; i++) {
             let fisch = new endtask.PinkerFisch();
             endtask.allesInBewegungArray.push(fisch);
         }
@@ -37,7 +39,8 @@ var endtask;
     }
     //Die Stelle des gefressenen kommt von einer Funktion außerhalb Wird übergeben.
     function update() {
-        window.setTimeout(update, 1000 / fps);
+        // window.setTimeout(update, 1000 / fps);
+        starten();
         endtask.crc.clearRect(0, 0, canvas.width, canvas.height);
         endtask.crc.putImageData(imageData, 0, 0);
         endtask.fressen();
@@ -156,5 +159,12 @@ var endtask;
             endtask.crc.stroke(seegras);
         }
     }
+    function starten() {
+        fame = window.setTimeout(update, 1000 / fps);
+    }
+    function beenden() {
+        window.clearTimeout(fame);
+    }
+    endtask.beenden = beenden;
 })(endtask || (endtask = {}));
 //# sourceMappingURL=canvas.js.map

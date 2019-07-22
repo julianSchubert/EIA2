@@ -50,42 +50,56 @@ namespace endtask {
             spielerfisch.dx = 0;
         }
     }
-    let punktzahl: number = 0;
+
     export function fressen(): number {
-     
+        
         for (let i: number = 0; i < allesInBewegungArray.length; i++) {
             let k: AllesInBewegung = allesInBewegungArray[i];
-            if (spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y ) { //geht sicher eleganter aber läuft
+            
+            if (spielerfisch.x + 30 > k.x && spielerfisch.x - 10 < k.x && spielerfisch.y - 20 < k.y && spielerfisch.y + 20  > k.y && allesInBewegungArray[i] != spielerfisch ) { 
+            
+                //geht sicher eleganter aber läuft 
+                // läuft mit spielerfisch spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y 
+                //spielerfisch.x + 2 * spielerfisch.groesse <= k.x && spielerfisch.x + 2 * spielerfisch.groesse + spielerfisch.groesse >= k.x && spielerfisch.y + 2 * spielerfisch.groesse <= k.y && spielerfisch.y + 2 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y 
+                console.log(spielerfisch.x);
                 //|| spielerfisch.x + 3.5 * spielerfisch.groesse <= k.x + 5 && spielerfisch.x + 3.5 * spielerfisch.groesse + spielerfisch.groesse >= k.x + 5 && spielerfisch.y + 0.35 * spielerfisch.groesse <= k.y + 5  && spielerfisch.y + 0.35 * spielerfisch.groesse + 1.5 * spielerfisch.groesse >= k.y + 5) {
                 if (spielerfisch.groesse >= k.groesse) {
                     console.log("Erfolg");
                     if (k.typ == 1) {
                         allesInBewegungArray.splice(i, 1);
+                        let fisch: Fisch = new PinkerFisch();
+                        allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 0.1;
                         punktzahl += 1;
                         return punktzahl;
                     }
                     else if (k.typ == 2) {
                         allesInBewegungArray.splice(i, 1);
+                        let fisch: OrangerFisch = new OrangerFisch();
+                        allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 1;
                         punktzahl += 10;
                         return punktzahl;
                     }
                     else if (k.typ == 3) {
                         allesInBewegungArray.splice(i, 1);
+                        let fisch: Fisch = new Fisch();
+                        allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 1.5;
                         punktzahl += 15;
                         return punktzahl;
                     }
                     else if (k.typ == 4) {
                         allesInBewegungArray.splice(i, 1);
+                        let blase: AllesInBewegung = new AllesInBewegung(Math.random());
+                        allesInBewegungArray.push(blase);
                         spielerfisch.groesse += 0.5;
                         punktzahl += 5;
                         return punktzahl;
                     }
                 }
                 else if (spielerfisch.groesse < k.groesse) {
-                    console.log("Loser");
+                    duBistEinLoser();
                     return punktzahl;
                 }
                 return punktzahl;
@@ -95,7 +109,6 @@ namespace endtask {
     }
 
     export function punktzahlEintragen(_punktzahl: number): void {
-        console.log("Geht es?");
         let element: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         if (element.getContext) {
             let crc: CanvasRenderingContext2D = element.getContext("2d");
@@ -112,6 +125,14 @@ namespace endtask {
             crc.strokeText(aktuellePunktzahl, element.width - 400, element.height - 590);
         }
     }
+
+    function duBistEinLoser(): void {
+        beenden();
+        let punkte: string = String(punktzahl);
+        spielername = prompt("Punktzahl:" + punkte, "Wie ist dein Name Kadett");
+        insert();
+    }
+
 }
                 // if (spielerfisch.): void {
             //
