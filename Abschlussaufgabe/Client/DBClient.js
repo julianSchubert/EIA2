@@ -1,6 +1,5 @@
 var endtask;
 (function (endtask) {
-    window.addEventListener("load", init);
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress = "https://eia2-julian.herokuapp.com/";
     function insert() {

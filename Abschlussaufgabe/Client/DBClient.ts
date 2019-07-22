@@ -1,5 +1,4 @@
 namespace endtask {
-    window.addEventListener("load", init);
     //let serverAddress: string = "http://localhost:8100/";
     let serverAddress: string = "https://eia2-julian.herokuapp.com/";
 
