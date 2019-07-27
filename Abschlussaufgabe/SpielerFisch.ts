@@ -10,7 +10,7 @@ namespace endtask {
             this.typ = 10;
             this.groesse = 20;
         }
-        draw(): void {//
+        draw(): void {
             let r: number = this.groesse; //Radius der Kreise
             let obereflosse: Path2D = new Path2D();
             obereflosse.moveTo(this.x - 0.95 * r, this.y - 0.5 * r);
