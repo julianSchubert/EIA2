@@ -1,6 +1,5 @@
 namespace endtask {
     export class Fisch2 extends Fisch {
-
         constructor() {
             super();
             this.dx = Math.random() * -10;
