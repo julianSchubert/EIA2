@@ -1,5 +1,4 @@
 namespace endtask {
-
     export class Fisch2 extends Fisch {
 
         constructor() {

@@ -1,5 +1,6 @@
 namespace endtask {
     export class SpaceFisch extends AllesInBewegung {
+        
         groesse: number;
         constructor() {
             super(Math.random());

@@ -1,5 +1,6 @@
 namespace endtask {
     export class Futter extends AllesInBewegung {
+        
         constructor(_x: number, _y: number) {
             super(Math.random());
             this.x = _x;
