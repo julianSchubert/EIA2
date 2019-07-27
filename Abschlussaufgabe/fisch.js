@@ -3,7 +3,7 @@ var endtask;
     class Fisch extends endtask.AllesInBewegung {
         constructor() {
             super(Math.random());
-            this.x *= Math.random();
+            this.x = Math.random() * 800 + 800;
             this.y *= Math.random();
             this.dx = Math.random() * 17;
             this.dy = Math.random() * 6;

@@ -1,6 +1,6 @@
 var endtask;
 (function (endtask) {
-    class OrangerFisch extends endtask.Fisch {
+    class Fisch2 extends endtask.Fisch {
         constructor() {
             super();
             this.dx = Math.random() * -10;
@@ -56,6 +56,6 @@ var endtask;
             }
         }
     }
-    endtask.OrangerFisch = OrangerFisch;
+    endtask.Fisch2 = Fisch2;
 })(endtask || (endtask = {}));
 //# sourceMappingURL=Fisch2.js.map

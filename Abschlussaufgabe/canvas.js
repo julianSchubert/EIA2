@@ -1,52 +1,59 @@
 var endtask;
 (function (endtask) {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", missionStart);
     let canvas;
     endtask.allesInBewegungArray = [];
     endtask.punktzahl = 0;
     let fps = 30;
     let imageData;
     let fame;
-    function init() {
+    function missionStart() {
+        document.addEventListener("keydown", init);
         canvas = document.getElementsByTagName("canvas")[0];
         endtask.crc = canvas.getContext("2d");
         zeichneHintergrund();
-        canvas.addEventListener("click", endtask.füttern);
-        document.addEventListener("keydown", endtask.fischbewegen);
-        document.addEventListener("keyup", endtask.fischstoppen);
-        imageData = endtask.crc.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < 20; i++) {
-            let blase = new endtask.AllesInBewegung(Math.random());
-            endtask.allesInBewegungArray.push(blase);
+    }
+    function init(_event) {
+        if (_event.keyCode == 32) {
+            canvas.addEventListener("click", endtask.füttern);
+            document.addEventListener("keydown", endtask.fischbewegen);
+            document.addEventListener("keyup", endtask.fischstoppen);
+            imageData = endtask.crc.getImageData(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < 20; i++) {
+                let blase = new endtask.AllesInBewegung(Math.random());
+                endtask.allesInBewegungArray.push(blase);
+            }
+            for (let i = 0; i < 1; i++) {
+                let spacefisch = new endtask.SpaceFisch();
+                endtask.allesInBewegungArray.push(spacefisch);
+            }
+            for (let i = 0; i < 1; i++) {
+                let boeserfisch = new endtask.BoeserFisch();
+                endtask.allesInBewegungArray.push(boeserfisch);
+            }
+            for (let i = 0; i < 5; i++) {
+                let fisch = new endtask.Fisch();
+                endtask.allesInBewegungArray.push(fisch);
+            }
+            for (let i = 0; i < 4; i++) {
+                let fisch = new endtask.Fisch2();
+                endtask.allesInBewegungArray.push(fisch);
+            }
+            for (let i = 0; i < 4; i++) {
+                let fisch = new endtask.PinkerFisch();
+                endtask.allesInBewegungArray.push(fisch);
+            }
+            update();
+            endtask.refresh();
         }
-        for (let i = 0; i < 1; i++) {
-            let spacefisch = new endtask.SpaceFisch();
-            endtask.allesInBewegungArray.push(spacefisch);
-        }
-        for (let i = 0; i < 5; i++) {
-            let fisch = new endtask.Fisch();
-            endtask.allesInBewegungArray.push(fisch);
-        }
-        for (let i = 0; i < 4; i++) {
-            let fisch = new endtask.OrangerFisch();
-            endtask.allesInBewegungArray.push(fisch);
-        }
-        for (let i = 0; i < 4; i++) {
-            let fisch = new endtask.PinkerFisch();
-            endtask.allesInBewegungArray.push(fisch);
-        }
-        update();
-        endtask.refresh();
     }
     //Die Stelle des gefressenen kommt von einer Funktion außerhalb Wird übergeben.
     function update() {
-        // window.setTimeout(update, 1000 / fps);
         starten();
         endtask.crc.clearRect(0, 0, canvas.width, canvas.height);
         endtask.crc.putImageData(imageData, 0, 0);
         endtask.fressen();
-        endtask.punktzahlEintragen(endtask.fressen()); //Hier muss der Typ der Klasse die gefressen wurde mittels ...[i].typ übergebenwerden
-        //für die Stelle im Array sollte die gefressener Fisch Stelle übergeben werden allesInBewegungArray[test()].typ)
+        endtask.punktzahlEintragen(endtask.fressen()); //Hier muss die aktuelle Punktzahl als Zahl übergeben werden damit es jedes mal neu zeichnet
         for (let i = 0; i < endtask.allesInBewegungArray.length; i++) {
             endtask.allesInBewegungArray[i].update();
         }
@@ -58,22 +65,33 @@ var endtask;
         //wasser
         endtask.crc.fillStyle = "navy";
         endtask.crc.fillRect(0, 0, 800, 500);
-        //kies
-        for (let i = 0; i < 20; i++) {
+        //Krater
+        for (let i = 0; i < 6; i++) {
             let x = Math.random() * 700;
             let y = 500 + Math.random() * 55;
-            let kies = new Path2D();
-            kies.arc(x, y, 5, 1 * Math.PI, 2 * Math.PI);
-            kies.closePath();
-            endtask.crc.fillStyle = "gray";
-            endtask.crc.strokeStyle = "gray";
-            endtask.crc.fill(kies);
-            endtask.crc.stroke(kies);
+            let unterteil = new Path2D();
+            unterteil.moveTo(x - 20, y - 10);
+            unterteil.quadraticCurveTo(x - 30, y - 1, x - 40, y);
+            unterteil.quadraticCurveTo(x, y + 10, x + 40, y);
+            unterteil.quadraticCurveTo(x + 30, y - 1, x + 20, y - 10);
+            endtask.crc.fillStyle = "darkslategray";
+            endtask.crc.strokeStyle = "black";
+            endtask.crc.fill(unterteil);
+            endtask.crc.stroke(unterteil);
+            let krater = new Path2D();
+            krater.moveTo(x - 20, y - 10);
+            krater.quadraticCurveTo(x, y - 3, x + 20, y - 10);
+            krater.moveTo(x - 20, y - 10);
+            krater.quadraticCurveTo(x, y - 17, x + 20, y - 10);
+            endtask.crc.fillStyle = "black";
+            endtask.crc.strokeStyle = "black";
+            endtask.crc.fill(krater);
+            endtask.crc.stroke(krater);
         }
         //sterne
         for (let i = 0; i < 20; i++) {
             let x = Math.random() * 700;
-            let y = 20 + Math.random() * 490;
+            let y = Math.random() * 490;
             let kies = new Path2D();
             kies.arc(x, y, 5, 0, 2 * Math.PI);
             kies.closePath();
@@ -92,7 +110,7 @@ var endtask;
             kiste.lineTo(x + 100, y + 25);
             kiste.moveTo(x, y + 50);
             kiste.lineTo(x + 100, y + 50);
-            endtask.crc.fillStyle = "sienna";
+            endtask.crc.fillStyle = "steelblue";
             endtask.crc.strokeStyle = "black";
             endtask.crc.fill(kiste);
             endtask.crc.stroke(kiste);
@@ -123,7 +141,7 @@ var endtask;
             seite.lineTo(x + 150, y - 30);
             seite.lineTo(x + 100, y);
             seite.closePath();
-            endtask.crc.fillStyle = "sienna";
+            endtask.crc.fillStyle = "steelblue";
             endtask.crc.strokeStyle = "black";
             endtask.crc.fill(seite);
             endtask.crc.stroke(seite);
@@ -141,7 +159,8 @@ var endtask;
             klappe.lineTo(x + 170, y - 110);
             klappe.lineTo(x + 150, y - 30);
             klappe.closePath();
-            endtask.crc.fillStyle = "sienna";
+            endtask.crc.fillStyle = "steelblue";
+            endtask.crc.strokeStyle = "black";
             endtask.crc.fill(klappe);
             endtask.crc.stroke(klappe);
         }
@@ -160,6 +179,7 @@ var endtask;
             endtask.crc.stroke(seegras);
         }
     }
+    //Werden benötigt, damit nach dem Spielverlieren die Animationen anhalten
     function starten() {
         fame = window.setTimeout(update, 1000 / fps);
     }

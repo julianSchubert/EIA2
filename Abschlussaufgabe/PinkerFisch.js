@@ -7,6 +7,9 @@ var endtask;
             this.dy = Math.random() * 4;
             this.typ = 4;
             this.groesse = 5; //Einbinden in die Bedingung für Fressen
+            if (endtask.punktzahl > 500) {
+                this.groesse = 10;
+            }
         }
         draw() {
             let kopf = new Path2D();

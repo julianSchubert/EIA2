@@ -12,8 +12,8 @@ var endtask;
         draw() {
             let blase = new Path2D();
             blase.arc(this.x, this.y, 10, 0, 2 * Math.PI);
-            endtask.crc.fillStyle = "cyan";
-            endtask.crc.strokeStyle = "blue";
+            endtask.crc.fillStyle = "mediumspringgreen";
+            endtask.crc.strokeStyle = "cyan";
             endtask.crc.fill(blase);
             endtask.crc.stroke(blase);
         }

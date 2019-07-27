@@ -34,6 +34,7 @@ var endtask;
             for (let i = 0; i < endtask.alleSpielerArray.length; i++) {
                 endtask.alleSpielerArray.sort(sortiereHighscore);
             }
+            writeHTML();
             console.log(endtask.alleSpielerArray);
         }
     }
@@ -47,6 +48,15 @@ var endtask;
             return -1;
         }
         return 0;
+    }
+    function writeHTML() {
+        for (let i = 0; i < 5; i++) {
+            console.log("HowYouDoin");
+            let highscoreElement = document.createElement('div');
+            let highscoreliste = `<p>${endtask.alleSpielerArray[i].name}:${endtask.alleSpielerArray[i].punktzahl}</p>`;
+            highscoreElement.innerHTML = highscoreliste;
+            document.getElementById("anhängen").appendChild(highscoreElement);
+        }
     }
 })(endtask || (endtask = {}));
 //# sourceMappingURL=DBClient.js.map

@@ -40,6 +40,7 @@ namespace endtask {
             for (let i: number = 0; i < alleSpielerArray.length; i++) {
                 alleSpielerArray.sort(sortiereHighscore);
             } 
+            writeHTML();
             console.log(alleSpielerArray);
         }
 
@@ -54,5 +55,14 @@ namespace endtask {
             return -1;
         }
         return 0;
+    }
+    function writeHTML(): void {
+        for (let i: number = 0; i < 5; i++) {
+            console.log("HowYouDoin");
+            let highscoreElement: HTMLDivElement = document.createElement('div');
+            let highscoreliste: string = `<p>${alleSpielerArray[i].name}:${alleSpielerArray[i].punktzahl}</p>`;
+            highscoreElement.innerHTML = highscoreliste;
+            document.getElementById("anhängen").appendChild(highscoreElement);
+        }               
     }
 }

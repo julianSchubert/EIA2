@@ -7,7 +7,7 @@ var endtask;
             this.y = _y;
             this.dx = Math.random() * 0.3;
             this.dy = Math.random() * 4;
-            //this.typ = 3;
+            this.typ = 6 + Math.round(Math.random());
         }
         draw() {
             let futter = new Path2D();
@@ -15,8 +15,14 @@ var endtask;
             futter.lineTo(this.x + 3, this.y + 10);
             futter.arc(this.x, this.y + 10, 3, 0, Math.PI);
             futter.bezierCurveTo(this.x + 1, this.y + 5, this.x - 4, this.y + 5, this.x - 3, this.y);
-            endtask.crc.fillStyle = "burlywood";
-            endtask.crc.strokeStyle = "saddlebrown";
+            if (this.typ == 6) {
+                endtask.crc.fillStyle = "olivedrab";
+                endtask.crc.strokeStyle = "olivedrab";
+            }
+            else if (this.typ == 7) {
+                endtask.crc.fillStyle = "springgreen";
+                endtask.crc.strokeStyle = "springgreen";
+            }
             endtask.crc.fill(futter);
             endtask.crc.stroke(futter);
         }
@@ -25,7 +31,6 @@ var endtask;
             this.y += this.dy;
             if (this.y > 580) {
                 this.y = 580;
-                this.x = this.x -= this.dx;
             }
         }
     }

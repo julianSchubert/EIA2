@@ -21,8 +21,8 @@ namespace endtask {
         draw(): void {
             let blase: Path2D = new Path2D();
             blase.arc(this.x, this.y, 10, 0, 2 * Math.PI);
-            crc.fillStyle = "cyan";
-            crc.strokeStyle = "blue";
+            crc.fillStyle = "mediumspringgreen";
+            crc.strokeStyle = "cyan";
             crc.fill(blase);
             crc.stroke(blase);
 

@@ -6,7 +6,7 @@ namespace endtask {
             this.y = _y;
             this.dx = Math.random() * 0.3;
             this.dy = Math.random() * 4;
-            //this.typ = 3;
+            this.typ = 6 + Math.round(Math.random());
         }
 
         draw(): void {
@@ -15,18 +15,24 @@ namespace endtask {
             futter.lineTo(this.x + 3, this.y + 10);
             futter.arc(this.x, this.y + 10, 3, 0, Math.PI);
             futter.bezierCurveTo(this.x + 1, this.y + 5, this.x - 4, this.y + 5, this.x - 3, this.y);
-            crc.fillStyle = "burlywood";
-            crc.strokeStyle = "saddlebrown";
+            if (this.typ == 6) {
+                crc.fillStyle = "olivedrab";
+                crc.strokeStyle = "olivedrab";
+            }
+            else if (this.typ == 7) {
+                crc.fillStyle = "springgreen";
+                crc.strokeStyle = "springgreen";
+            }
             crc.fill(futter);
             crc.stroke(futter);
         }
-          
+
         move(): void {
             this.x += this.dx;
             this.y += this.dy;
             if (this.y > 580) {
                 this.y = 580;
-                this.x = this.x -= this.dx;
+
             }
         }
     }

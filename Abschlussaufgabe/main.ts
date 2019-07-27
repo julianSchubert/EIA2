@@ -23,15 +23,27 @@ namespace endtask {
         let taste: number = _event.keyCode;
         if (taste == 87) {
             spielerfisch.dy = -5;
+            if (punktzahl > 1000) {
+                spielerfisch.dy = -7;
+            }
         }
         else if (taste == 83) {
             spielerfisch.dy = 5;
+            if (punktzahl > 1000) {
+                spielerfisch.dy = +7;
+            }
         }
         else if (taste == 65) {
             spielerfisch.dx = -5;
+            if (punktzahl > 1000) {
+                spielerfisch.dx = -7;
+            }
         }
         else if (taste == 68) {
             spielerfisch.dx = 5;
+            if (punktzahl > 1000) {
+                spielerfisch.dx = 7;
+            }
         }
     }
 
@@ -69,13 +81,13 @@ namespace endtask {
                         allesInBewegungArray.splice(i, 1);
                         let fisch: Fisch = new PinkerFisch();
                         allesInBewegungArray.push(fisch);
-                        spielerfisch.groesse += 0.1;
-                        punktzahl += 1;
+                        spielerfisch.groesse += 0;
+                        punktzahl += 2;
                         return punktzahl;
                     }
                     else if (k.typ == 2) {
                         allesInBewegungArray.splice(i, 1);
-                        let fisch: OrangerFisch = new OrangerFisch();
+                        let fisch: Fisch2 = new Fisch2();
                         allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 1;
                         punktzahl += 10;
@@ -85,7 +97,7 @@ namespace endtask {
                         allesInBewegungArray.splice(i, 1);
                         let fisch: Fisch = new Fisch();
                         allesInBewegungArray.push(fisch);
-                        spielerfisch.groesse += 1.5;
+                        spielerfisch.groesse += 0.25;
                         punktzahl += 15;
                         return punktzahl;
                     }
@@ -94,7 +106,37 @@ namespace endtask {
                         let blase: AllesInBewegung = new AllesInBewegung(Math.random());
                         allesInBewegungArray.push(blase);
                         spielerfisch.groesse += 0.5;
-                        punktzahl += 5;
+                        punktzahl += 1;
+                        return punktzahl;
+                    }
+                    else if (k.typ == 5) {
+                        allesInBewegungArray.splice(i, 1);
+                        let ufo: Ufo = new Ufo();
+                        allesInBewegungArray.push(ufo);
+                        spielerfisch.groesse += 3;
+                        punktzahl += 50;
+                        return punktzahl;
+                    }
+                    else if (k.typ == 6) {
+                        allesInBewegungArray.splice(i, 1);
+                        spielerfisch.groesse += 0.5;
+                        punktzahl += 7;
+                        return punktzahl;
+                    }
+                    else if (k.typ == 7) {
+                        allesInBewegungArray.splice(i, 1);
+                        spielerfisch.groesse -= 2;
+                        punktzahl -= 2;
+                        return punktzahl;
+                    }
+                    else if (k.typ == 8) {
+                        allesInBewegungArray.splice(i, 1);
+                        for (let i: number = 0;  i < 2; i++) {
+                            let spacy: SpaceFisch = new SpaceFisch();
+                            allesInBewegungArray.push(spacy);
+                            }
+                        spielerfisch.groesse -= 20;
+                        punktzahl += 100;
                         return punktzahl;
                     }
                 }

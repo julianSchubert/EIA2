@@ -1,6 +1,6 @@
 namespace endtask {
 
-    export class OrangerFisch extends Fisch {
+    export class Fisch2 extends Fisch {
 
         constructor() {
             super();

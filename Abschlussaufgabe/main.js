@@ -22,15 +22,27 @@ var endtask;
         let taste = _event.keyCode;
         if (taste == 87) {
             spielerfisch.dy = -5;
+            if (endtask.punktzahl > 1000) {
+                spielerfisch.dy = -7;
+            }
         }
         else if (taste == 83) {
             spielerfisch.dy = 5;
+            if (endtask.punktzahl > 1000) {
+                spielerfisch.dy = +7;
+            }
         }
         else if (taste == 65) {
             spielerfisch.dx = -5;
+            if (endtask.punktzahl > 1000) {
+                spielerfisch.dx = -7;
+            }
         }
         else if (taste == 68) {
             spielerfisch.dx = 5;
+            if (endtask.punktzahl > 1000) {
+                spielerfisch.dx = 7;
+            }
         }
     }
     endtask.fischbewegen = fischbewegen;
@@ -65,13 +77,13 @@ var endtask;
                         endtask.allesInBewegungArray.splice(i, 1);
                         let fisch = new endtask.PinkerFisch();
                         endtask.allesInBewegungArray.push(fisch);
-                        spielerfisch.groesse += 0.1;
-                        endtask.punktzahl += 1;
+                        spielerfisch.groesse += 0;
+                        endtask.punktzahl += 2;
                         return endtask.punktzahl;
                     }
                     else if (k.typ == 2) {
                         endtask.allesInBewegungArray.splice(i, 1);
-                        let fisch = new endtask.OrangerFisch();
+                        let fisch = new endtask.Fisch2();
                         endtask.allesInBewegungArray.push(fisch);
                         spielerfisch.groesse += 1;
                         endtask.punktzahl += 10;
@@ -81,7 +93,7 @@ var endtask;
                         endtask.allesInBewegungArray.splice(i, 1);
                         let fisch = new endtask.Fisch();
                         endtask.allesInBewegungArray.push(fisch);
-                        spielerfisch.groesse += 1.5;
+                        spielerfisch.groesse += 0.25;
                         endtask.punktzahl += 15;
                         return endtask.punktzahl;
                     }
@@ -90,7 +102,37 @@ var endtask;
                         let blase = new endtask.AllesInBewegung(Math.random());
                         endtask.allesInBewegungArray.push(blase);
                         spielerfisch.groesse += 0.5;
-                        endtask.punktzahl += 5;
+                        endtask.punktzahl += 1;
+                        return endtask.punktzahl;
+                    }
+                    else if (k.typ == 5) {
+                        endtask.allesInBewegungArray.splice(i, 1);
+                        let ufo = new endtask.Ufo();
+                        endtask.allesInBewegungArray.push(ufo);
+                        spielerfisch.groesse += 3;
+                        endtask.punktzahl += 50;
+                        return endtask.punktzahl;
+                    }
+                    else if (k.typ == 6) {
+                        endtask.allesInBewegungArray.splice(i, 1);
+                        spielerfisch.groesse += 0.5;
+                        endtask.punktzahl += 7;
+                        return endtask.punktzahl;
+                    }
+                    else if (k.typ == 7) {
+                        endtask.allesInBewegungArray.splice(i, 1);
+                        spielerfisch.groesse -= 2;
+                        endtask.punktzahl -= 2;
+                        return endtask.punktzahl;
+                    }
+                    else if (k.typ == 8) {
+                        endtask.allesInBewegungArray.splice(i, 1);
+                        for (let i = 0; i < 2; i++) {
+                            let spacy = new endtask.SpaceFisch();
+                            endtask.allesInBewegungArray.push(spacy);
+                        }
+                        spielerfisch.groesse -= 20;
+                        endtask.punktzahl += 100;
                         return endtask.punktzahl;
                     }
                 }
